@@ -37,6 +37,7 @@ prompt APPLICATION 103 - HRMS
 --   Exported By:     NUMAN
 --   Flashback:       0
 --   Export Type:     Application Export
+<<<<<<< HEAD
 --     Pages:                     30
 --       Items:                   53
 --       Validations:              2
@@ -44,6 +45,15 @@ prompt APPLICATION 103 - HRMS
 --       Regions:                 70
 --       Buttons:                 48
 --       Dynamic Actions:          10
+=======
+--     Pages:                     28
+--       Items:                   46
+--       Validations:              2
+--       Processes:               24
+--       Regions:                 66
+--       Buttons:                 42
+--       Dynamic Actions:          9
+>>>>>>> parent of 68b792e (Add Lookups)
 --     Shared Components:
 --       Logic:
 --         App Settings:           2
@@ -796,19 +806,6 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_current_type=>'TARGET_PAGE'
 ,p_created_on=>wwv_flow_imp.dz('20260606110000Z')
 ,p_updated_on=>wwv_flow_imp.dz('20260606110000Z')
-,p_created_by=>'NUMAN'
-,p_updated_by=>'NUMAN'
-);
-wwv_flow_imp_shared.create_list_item(
- p_id=>wwv_flow_imp.id(9002000000000001)
-,p_list_item_display_sequence=>30
-,p_list_item_link_text=>'Lookups'
-,p_static_id=>'lookups'
-,p_list_item_link_target=>'f?p=&APP_ID.:20:&APP_SESSION.::&DEBUG.:RP,20::'
-,p_list_item_icon=>'fa-list-ul'
-,p_list_item_current_type=>'TARGET_PAGE'
-,p_created_on=>wwv_flow_imp.dz('20260606112000Z')
-,p_updated_on=>wwv_flow_imp.dz('20260606112000Z')
 ,p_created_by=>'NUMAN'
 ,p_updated_by=>'NUMAN'
 );
@@ -2716,6 +2713,7 @@ wwv_flow_imp_page.create_page_process(
 );
 end;
 /
+<<<<<<< HEAD
 prompt --application/pages/page_00020
 begin
 wwv_flow_imp_page.create_page(
@@ -3735,6 +3733,8 @@ wwv_flow_imp_page.create_page_branch(
 );
 end;
 /
+=======
+>>>>>>> parent of 68b792e (Add Lookups)
 prompt --application/pages/page_09999
 begin
 wwv_flow_imp_page.create_page(
