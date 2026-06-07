@@ -50,11 +50,11 @@ BEGIN
         OR CNIC IN ('3520212345671', '3520212345672')
         OR EMAIL IN ('ut.employee@example.com', 'ut.employee.updated@example.com');
 
-    DELETE FROM ADMIN.HRMS_DEPARTMENTS WHERE DEPARTMENT_CODE = 'UT-HRMS-DEPT';
+    DELETE FROM ADMIN.HRMS_DEPARTMENTS WHERE DEPARTMENT_CODE IN ('UT-HRMS-DEPT', 'UT-HRMS-DEPT2');
     DELETE FROM ADMIN.HRMS_LOCATIONS WHERE LOCATION_CODE = 'UT-HRMS-LOC';
-    DELETE FROM ADMIN.HRMS_DESIGNATIONS WHERE DESIGNATION_CODE = 'UT-HRMS-DSG';
-    DELETE FROM ADMIN.HRMS_GRADES WHERE GRADE_CODE = 'UT-HRMS-GRD';
-    DELETE FROM ADMIN.HRMS_EMPLOYMENT_TYPES WHERE EMPLOYMENT_TYPE_CODE = 'UT-HRMS-ET';
+    DELETE FROM ADMIN.HRMS_DESIGNATIONS WHERE DESIGNATION_CODE IN ('UT-HRMS-DSG', 'UT-HRMS-DSG2');
+    DELETE FROM ADMIN.HRMS_GRADES WHERE GRADE_CODE IN ('UT-HRMS-GRD', 'UT-HRMS-GRD2');
+    DELETE FROM ADMIN.HRMS_EMPLOYMENT_TYPES WHERE EMPLOYMENT_TYPE_CODE IN ('UT-HRMS-ET', 'UT-HRMS-ET2');
     COMMIT;
 
     ADMIN.HRMS_PKG.createLocation(
@@ -118,6 +118,55 @@ BEGIN
     );
     assertSuccess('createEmploymentType');
     l_employmentTypeId := TO_NUMBER(l_response);
+
+    ADMIN.HRMS_PKG.updateDepartment(
+        departmentId       => l_departmentId,
+        departmentCode     => 'ut-hrms-dept2',
+        departmentName     => 'Unit Test Department Updated',
+        parentDepartmentId => NULL,
+        locationId         => l_locationId,
+        costCenter         => 'utcc2',
+        userName           => 'UNIT_TEST',
+        errorCode          => l_errorCode,
+        errorMessage       => l_errorMessage,
+        response           => l_response
+    );
+    assertSuccess('updateDepartment');
+
+    ADMIN.HRMS_PKG.updateDesignation(
+        designationId   => l_designationId,
+        designationCode => 'ut-hrms-dsg2',
+        designationName => 'Unit Test Designation Updated',
+        userName        => 'UNIT_TEST',
+        errorCode       => l_errorCode,
+        errorMessage    => l_errorMessage,
+        response        => l_response
+    );
+    assertSuccess('updateDesignation');
+
+    ADMIN.HRMS_PKG.updateGrade(
+        gradeId      => l_gradeId,
+        gradeCode    => 'ut-hrms-grd2',
+        gradeName    => 'Unit Test Grade Updated',
+        minSalary    => 1500,
+        maxSalary    => 2500,
+        userName     => 'UNIT_TEST',
+        errorCode    => l_errorCode,
+        errorMessage => l_errorMessage,
+        response     => l_response
+    );
+    assertSuccess('updateGrade');
+
+    ADMIN.HRMS_PKG.updateEmploymentType(
+        employmentTypeId   => l_employmentTypeId,
+        employmentTypeCode => 'ut-hrms-et2',
+        employmentTypeName => 'Unit Test Employment Type Updated',
+        userName           => 'UNIT_TEST',
+        errorCode          => l_errorCode,
+        errorMessage       => l_errorMessage,
+        response           => l_response
+    );
+    assertSuccess('updateEmploymentType');
 
     ADMIN.HRMS_PKG.createEmployee(
         employeeCode     => 'ut-hrms-emp-001',
@@ -235,11 +284,43 @@ BEGIN
     );
     assertSuccess('deleteEmployee');
 
-    DELETE FROM ADMIN.HRMS_DEPARTMENTS WHERE DEPARTMENT_ID = l_departmentId;
+    ADMIN.HRMS_PKG.deleteDepartment(
+        departmentId  => l_departmentId,
+        userName      => 'UNIT_TEST',
+        errorCode     => l_errorCode,
+        errorMessage  => l_errorMessage,
+        response      => l_response
+    );
+    assertSuccess('deleteDepartment');
+
+    ADMIN.HRMS_PKG.deleteDesignation(
+        designationId => l_designationId,
+        userName      => 'UNIT_TEST',
+        errorCode     => l_errorCode,
+        errorMessage  => l_errorMessage,
+        response      => l_response
+    );
+    assertSuccess('deleteDesignation');
+
+    ADMIN.HRMS_PKG.deleteGrade(
+        gradeId       => l_gradeId,
+        userName      => 'UNIT_TEST',
+        errorCode     => l_errorCode,
+        errorMessage  => l_errorMessage,
+        response      => l_response
+    );
+    assertSuccess('deleteGrade');
+
+    ADMIN.HRMS_PKG.deleteEmploymentType(
+        employmentTypeId => l_employmentTypeId,
+        userName         => 'UNIT_TEST',
+        errorCode        => l_errorCode,
+        errorMessage     => l_errorMessage,
+        response         => l_response
+    );
+    assertSuccess('deleteEmploymentType');
+
     DELETE FROM ADMIN.HRMS_LOCATIONS WHERE LOCATION_ID = l_locationId;
-    DELETE FROM ADMIN.HRMS_DESIGNATIONS WHERE DESIGNATION_ID = l_designationId;
-    DELETE FROM ADMIN.HRMS_GRADES WHERE GRADE_ID = l_gradeId;
-    DELETE FROM ADMIN.HRMS_EMPLOYMENT_TYPES WHERE EMPLOYMENT_TYPE_ID = l_employmentTypeId;
     COMMIT;
 
     DBMS_OUTPUT.PUT_LINE('HRMS_PKG tests passed.');

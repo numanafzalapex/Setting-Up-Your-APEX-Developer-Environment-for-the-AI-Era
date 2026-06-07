@@ -33,17 +33,17 @@ prompt APPLICATION 103 - HRMS
 -- Application Export:
 --   Application:     103
 --   Name:            HRMS
---   Date and Time:   09:21 Sunday June 7, 2026
+--   Date and Time:   12:20 Sunday June 7, 2026
 --   Exported By:     NUMAN
 --   Flashback:       0
 --   Export Type:     Application Export
---     Pages:                     31
---       Items:                   63
+--     Pages:                     37
+--       Items:                   92
 --       Validations:              2
---       Processes:               29
---       Regions:                 72
---       Buttons:                 54
---       Dynamic Actions:         11
+--       Processes:               38
+--       Regions:                 85
+--       Buttons:                 74
+--       Dynamic Actions:         12
 --     Shared Components:
 --       Logic:
 --         App Settings:           2
@@ -111,12 +111,12 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'HRMS'
 ,p_created_on=>wwv_flow_imp.dz('20260606101625Z')
-,p_last_updated_on=>wwv_flow_imp.dz('20260606203457Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20260607121852Z')
 ,p_created_by=>'NUMAN'
 ,p_last_updated_by=>'NUMAN'
 ,p_file_prefix=>nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>2461198101630
-,p_version_scn=>'22126350'
+,p_version_scn=>'23246858'
 ,p_print_server_type=>'NATIVE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'
@@ -774,15 +774,81 @@ wwv_flow_imp_shared.create_list_item(
 ,p_updated_by=>'NUMAN'
 );
 wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(9004000000000001)
+,p_list_item_display_sequence=>40
+,p_list_item_link_text=>'Departments'
+,p_static_id=>'departments'
+,p_list_item_link_target=>'f?p=&APP_ID.:30:&APP_SESSION.::&DEBUG.:RP,30::'
+,p_list_item_icon=>'fa-building'
+,p_list_item_current_type=>'TARGET_PAGE'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(9005000000000001)
+,p_list_item_display_sequence=>50
+,p_list_item_link_text=>'Designations'
+,p_static_id=>'designations'
+,p_list_item_link_target=>'f?p=&APP_ID.:31:&APP_SESSION.::&DEBUG.:RP,31::'
+,p_list_item_icon=>'fa-id-badge'
+,p_list_item_current_type=>'TARGET_PAGE'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_shared.create_list_item(
  p_id=>wwv_flow_imp.id(9001000000000001)
 ,p_list_item_display_sequence=>20
-,p_list_item_link_text=>'Employees'
-,p_static_id=>'employees'
-,p_list_item_link_target=>'f?p=&APP_ID.:10:&APP_SESSION.::&DEBUG.:RP,10::'
+,p_list_item_link_text=>'Employee Dashboard'
+,p_static_id=>'employee-dashboard'
+,p_list_item_link_target=>'f?p=&APP_ID.:12:&APP_SESSION.::&DEBUG.:RP,12::'
 ,p_list_item_icon=>'fa-users'
 ,p_list_item_current_type=>'TARGET_PAGE'
 ,p_created_on=>wwv_flow_imp.dz('20260606110000Z')
-,p_updated_on=>wwv_flow_imp.dz('20260606110000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(9003000000000001)
+,p_list_item_display_sequence=>21
+,p_list_item_link_text=>'Employees'
+,p_static_id=>'employees'
+,p_list_item_link_target=>'f?p=&APP_ID.:10:&APP_SESSION.::&DEBUG.:RP,10::'
+,p_list_item_icon=>'fa-table'
+,p_parent_list_item_id=>wwv_flow_imp.id(9001000000000001)
+,p_list_item_current_type=>'TARGET_PAGE'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(9007000000000001)
+,p_list_item_display_sequence=>70
+,p_list_item_link_text=>'Employment Types'
+,p_static_id=>'employment-types'
+,p_list_item_link_target=>'f?p=&APP_ID.:33:&APP_SESSION.::&DEBUG.:RP,33::'
+,p_list_item_icon=>'fa-briefcase'
+,p_list_item_current_type=>'TARGET_PAGE'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(9006000000000001)
+,p_list_item_display_sequence=>60
+,p_list_item_link_text=>'Grades'
+,p_static_id=>'grades'
+,p_list_item_link_target=>'f?p=&APP_ID.:32:&APP_SESSION.::&DEBUG.:RP,32::'
+,p_list_item_icon=>'fa-signal'
+,p_list_item_current_type=>'TARGET_PAGE'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
 ,p_created_by=>'NUMAN'
 ,p_updated_by=>'NUMAN'
 );
@@ -2154,11 +2220,11 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'<p>Use this page to search, sort, filter, and manage employee records.</p>',
+'<p>Use this page to search, sort, filter, download, and manage employee records.</p>',
 '<p>Click the edit icon to update or delete an employee. Click <strong>Add Employee</strong> to create a new employee.</p>'))
 ,p_page_component_map=>'18'
 ,p_created_on=>wwv_flow_imp.dz('20260606110000Z')
-,p_last_updated_on=>wwv_flow_imp.dz('20260606110000Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20260607100000Z')
 ,p_created_by=>'NUMAN'
 ,p_last_updated_by=>'NUMAN'
 );
@@ -2173,11 +2239,29 @@ wwv_flow_imp_page.create_page_plug(
 ,p_query_type=>'SQL'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select employee_id,',
+'       employee_code,',
 '       first_name,',
 '       last_name,',
+'       cnic,',
 '       email,',
-'       created_on',
-'  from employees'))
+'       mobile,',
+'       (select d.department_name',
+'          from admin.hrms_departments d',
+'         where d.department_id = e.department_id) as department_id,',
+'       (select d.designation_name',
+'          from admin.hrms_designations d',
+'         where d.designation_id = e.designation_id) as designation_id,',
+'       (select g.grade_name',
+'          from admin.hrms_grades g',
+'         where g.grade_id = e.grade_id) as grade_id,',
+'       (select t.employment_type_name',
+'          from admin.hrms_employment_types t',
+'         where t.employment_type_id = e.employment_type_id) as employment_type_id,',
+'       date_of_joining,',
+'       status,',
+'       created_on,',
+'       updated_on',
+'  from admin.hrms_employees e'))
 ,p_plug_source_type=>'NATIVE_IR'
 ,p_prn_content_disposition=>'ATTACHMENT'
 ,p_prn_units=>'INCHES'
@@ -2234,6 +2318,21 @@ wwv_flow_imp_page.create_worksheet(
 ,p_updated_by=>'NUMAN'
 );
 wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9001000000000061)
+,p_db_column_name=>'CNIC'
+,p_display_order=>6
+,p_column_identifier=>'G'
+,p_column_label=>'CNIC'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(9001000000000016)
 ,p_db_column_name=>'CREATED_ON'
 ,p_display_order=>5
@@ -2249,6 +2348,52 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_updated_by=>'NUMAN'
 );
 wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9001000000000067)
+,p_db_column_name=>'DATE_OF_JOINING'
+,p_display_order=>12
+,p_column_identifier=>'M'
+,p_column_label=>'Joining Date'
+,p_column_type=>'DATE'
+,p_heading_alignment=>'LEFT'
+,p_format_mask=>'DD-MON-YYYY'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9001000000000063)
+,p_db_column_name=>'DEPARTMENT_ID'
+,p_display_order=>8
+,p_column_identifier=>'I'
+,p_column_label=>'Department'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9001000000000064)
+,p_db_column_name=>'DESIGNATION_ID'
+,p_display_order=>9
+,p_column_identifier=>'J'
+,p_column_label=>'Designation'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(9001000000000015)
 ,p_db_column_name=>'EMAIL'
 ,p_display_order=>4
@@ -2260,6 +2405,21 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_available_clientside=>'N'
 ,p_created_on=>wwv_flow_imp.dz('20260606110000Z')
 ,p_updated_on=>wwv_flow_imp.dz('20260606110000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9001000000000060)
+,p_db_column_name=>'EMPLOYEE_CODE'
+,p_display_order=>1
+,p_column_identifier=>'F'
+,p_column_label=>'Code'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'Y'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
 ,p_created_by=>'NUMAN'
 ,p_updated_by=>'NUMAN'
 );
@@ -2280,6 +2440,21 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_updated_by=>'NUMAN'
 );
 wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9001000000000066)
+,p_db_column_name=>'EMPLOYMENT_TYPE_ID'
+,p_display_order=>11
+,p_column_identifier=>'L'
+,p_column_label=>'Employment Type'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(9001000000000013)
 ,p_db_column_name=>'FIRST_NAME'
 ,p_display_order=>2
@@ -2291,6 +2466,21 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_available_clientside=>'N'
 ,p_created_on=>wwv_flow_imp.dz('20260606110000Z')
 ,p_updated_on=>wwv_flow_imp.dz('20260606110000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9001000000000065)
+,p_db_column_name=>'GRADE_ID'
+,p_display_order=>10
+,p_column_identifier=>'K'
+,p_column_label=>'Grade'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
 ,p_created_by=>'NUMAN'
 ,p_updated_by=>'NUMAN'
 );
@@ -2309,6 +2499,53 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_created_by=>'NUMAN'
 ,p_updated_by=>'NUMAN'
 );
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9001000000000062)
+,p_db_column_name=>'MOBILE'
+,p_display_order=>7
+,p_column_identifier=>'H'
+,p_column_label=>'Mobile'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9001000000000068)
+,p_db_column_name=>'STATUS'
+,p_display_order=>13
+,p_column_identifier=>'N'
+,p_column_label=>'Status'
+,p_column_html_expression=>'<span class="t-Badge t-Badge--subtle">#STATUS#</span>'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9001000000000069)
+,p_db_column_name=>'UPDATED_ON'
+,p_display_order=>15
+,p_column_identifier=>'O'
+,p_column_label=>'Updated On'
+,p_column_type=>'DATE'
+,p_heading_alignment=>'LEFT'
+,p_format_mask=>'SINCE'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
 wwv_flow_imp_page.create_worksheet_rpt(
  p_id=>wwv_flow_imp.id(9001000000000017)
 ,p_application_user=>'APXWS_DEFAULT'
@@ -2316,10 +2553,10 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_report_alias=>'primary'
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
-,p_report_columns=>'FIRST_NAME:LAST_NAME:EMAIL:CREATED_ON'
-,p_sort_column_1=>'LAST_NAME'
+,p_report_columns=>'EMPLOYEE_CODE:FIRST_NAME:LAST_NAME:EMAIL:MOBILE:DEPARTMENT_ID:DESIGNATION_ID:GRADE_ID:EMPLOYMENT_TYPE_ID:DATE_OF_JOINING:STATUS'
+,p_sort_column_1=>'EMPLOYEE_CODE'
 ,p_sort_direction_1=>'ASC'
-,p_sort_column_2=>'FIRST_NAME'
+,p_sort_column_2=>'LAST_NAME'
 ,p_sort_direction_2=>'ASC'
 ,p_created_on=>wwv_flow_imp.dz('20260606110000Z')
 ,p_updated_on=>wwv_flow_imp.dz('20260606110000Z')
@@ -2334,14 +2571,34 @@ wwv_flow_imp_page.create_page_button(
 ,p_static_id=>'add-employee'
 ,p_show_as_disabled=>false
 ,p_button_action=>'REDIRECT_PAGE'
-,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>4073839297780169708
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
+,p_button_template_id=>2084305881903810008
 ,p_button_is_hot=>'Y'
 ,p_button_image_alt=>'Add Employee'
 ,p_button_position=>'RIGHT_OF_IR_SEARCH_BAR'
 ,p_button_redirect_url=>'f?p=&APP_ID.:11:&APP_SESSION.::&DEBUG.:RP,11::'
+,p_icon_css_classes=>'fa-plus'
 ,p_created_on=>wwv_flow_imp.dz('20260606110000Z')
-,p_updated_on=>wwv_flow_imp.dz('20260606110000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9001000000000070)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(9001000000000010)
+,p_button_name=>'DASHBOARD'
+,p_static_id=>'dashboard'
+,p_show_as_disabled=>false
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
+,p_button_template_id=>2084305881903810008
+,p_button_image_alt=>'Dashboard'
+,p_button_position=>'RIGHT_OF_IR_SEARCH_BAR'
+,p_button_redirect_url=>'f?p=&APP_ID.:12:&APP_SESSION.::&DEBUG.:RP,12::'
+,p_icon_css_classes=>'fa-dashboard'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
 ,p_created_by=>'NUMAN'
 ,p_updated_by=>'NUMAN'
 );
@@ -2402,10 +2659,10 @@ prompt --application/pages/page_00011
 begin
 wwv_flow_imp_page.create_page(
  p_id=>11
-,p_name=>'Employee'
+,p_name=>'Employee Profile'
 ,p_alias=>'EMPLOYEE'
 ,p_page_mode=>'MODAL'
-,p_step_title=>'Employee'
+,p_step_title=>'Employee Profile'
 ,p_first_item=>'AUTO_FIRST_ITEM'
 ,p_autocomplete_on_off=>'OFF'
 ,p_step_template=>2101883943284197310
@@ -2414,10 +2671,10 @@ wwv_flow_imp_page.create_page(
 ,p_dialog_chained=>'N'
 ,p_dialog_resizable=>'Y'
 ,p_protection_level=>'C'
-,p_help_text=>'<p>Use this form to create, update, or delete an employee record.</p>'
-,p_page_component_map=>'02'
+,p_help_text=>'<p>Use this form to create, update, or delete a complete employee profile.</p>'
+,p_page_component_map=>'16'
 ,p_created_on=>wwv_flow_imp.dz('20260606110000Z')
-,p_last_updated_on=>wwv_flow_imp.dz('20260606110000Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20260607121852Z')
 ,p_created_by=>'NUMAN'
 ,p_last_updated_by=>'NUMAN'
 );
@@ -2443,15 +2700,15 @@ wwv_flow_imp_page.create_page_plug(
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(9001000000000023)
-,p_plug_name=>'Employee Details'
-,p_static_id=>'employee-details'
+,p_plug_name=>'Employee Profile'
+,p_static_id=>'employee-profile'
 ,p_region_template_options=>'#DEFAULT#:t-Form--stretchInputs'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>4502917002193490937
 ,p_plug_display_sequence=>10
 ,p_plug_item_display_point=>'ABOVE'
 ,p_query_type=>'TABLE'
-,p_query_table=>'EMPLOYEES'
+,p_query_table=>'HRMS_EMPLOYEES'
 ,p_include_rowid_column=>false
 ,p_is_editable=>true
 ,p_edit_operations=>'i:u:d'
@@ -2557,10 +2814,57 @@ wwv_flow_imp_page.create_page_button(
 ,p_updated_by=>'NUMAN'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9001000000000072)
+,p_name=>'P11_CNIC'
+,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
+,p_item_sequence=>42
+,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_prompt=>'CNIC'
+,p_source=>'CNIC'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_cMaxlength=>15
+,p_field_template=>1610598484065263269
+,p_is_persistent=>'N'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9001000000000080)
+,p_name=>'P11_CREATED_BY'
+,p_source_data_type=>'VARCHAR2'
+,p_item_sequence=>120
+,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_prompt=>'Created By'
+,p_source=>'CREATED_BY'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_field_template=>2042262243893469891
+,p_is_persistent=>'N'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'based_on', 'VALUE',
+  'format', 'PLAIN')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(9001000000000033)
 ,p_name=>'P11_CREATED_ON'
 ,p_source_data_type=>'DATE'
-,p_item_sequence=>50
+,p_item_sequence=>150
 ,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
 ,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
 ,p_prompt=>'Created On'
@@ -2578,9 +2882,85 @@ wwv_flow_imp_page.create_page_item(
 ,p_updated_by=>'NUMAN'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9001000000000078)
+,p_name=>'P11_DATE_OF_JOINING'
+,p_source_data_type=>'DATE'
+,p_is_required=>true
+,p_item_sequence=>100
+,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_prompt=>'Date of Joining'
+,p_source=>'DATE_OF_JOINING'
+,p_display_as=>'NATIVE_DATE_PICKER_APEX'
+,p_begin_on_new_line=>'N'
+,p_field_template=>1610598484065263269
+,p_is_persistent=>'N'
+,p_lov_display_extra=>'NO'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9001000000000074)
+,p_name=>'P11_DEPARTMENT_ID'
+,p_source_data_type=>'NUMBER'
+,p_is_required=>true
+,p_item_sequence=>60
+,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_prompt=>'Department'
+,p_source=>'DEPARTMENT_ID'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select department_name d, department_id r',
+'  from admin.hrms_departments',
+' where is_active = ''Y''',
+' order by department_name'))
+,p_lov_display_null=>'YES'
+,p_field_template=>1610598484065263269
+,p_is_persistent=>'N'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9001000000000075)
+,p_name=>'P11_DESIGNATION_ID'
+,p_source_data_type=>'NUMBER'
+,p_is_required=>true
+,p_item_sequence=>70
+,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_prompt=>'Designation'
+,p_source=>'DESIGNATION_ID'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select designation_name d, designation_id r',
+'  from admin.hrms_designations',
+' where is_active = ''Y''',
+' order by designation_name'))
+,p_lov_display_null=>'YES'
+,p_begin_on_new_line=>'N'
+,p_field_template=>1610598484065263269
+,p_is_persistent=>'N'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(9001000000000032)
 ,p_name=>'P11_EMAIL'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
 ,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
@@ -2589,16 +2969,42 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_TEXT_FIELD'
 ,p_cSize=>60
 ,p_cMaxlength=>200
-,p_field_template=>2042262243893469891
+,p_field_template=>3033038269190080499
+,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
-,p_lov_display_extra=>'NO'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'disabled', 'N',
   'submit_when_enter_pressed', 'N',
   'subtype', 'EMAIL',
   'trim_spaces', 'BOTH')).to_clob
 ,p_created_on=>wwv_flow_imp.dz('20260606110000Z')
-,p_updated_on=>wwv_flow_imp.dz('20260606110000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607121852Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9001000000000071)
+,p_name=>'P11_EMPLOYEE_CODE'
+,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
+,p_item_sequence=>15
+,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_prompt=>'Employee Code'
+,p_source=>'EMPLOYEE_CODE'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_cMaxlength=>30
+,p_field_template=>1610598484065263269
+,p_is_persistent=>'N'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
 ,p_created_by=>'NUMAN'
 ,p_updated_by=>'NUMAN'
 );
@@ -2623,9 +3029,37 @@ wwv_flow_imp_page.create_page_item(
 ,p_updated_by=>'NUMAN'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9001000000000077)
+,p_name=>'P11_EMPLOYMENT_TYPE_ID'
+,p_source_data_type=>'NUMBER'
+,p_is_required=>true
+,p_item_sequence=>90
+,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_prompt=>'Employment Type'
+,p_source=>'EMPLOYMENT_TYPE_ID'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select employment_type_name d, employment_type_id r',
+'  from admin.hrms_employment_types',
+' where is_active = ''Y''',
+' order by employment_type_name'))
+,p_lov_display_null=>'YES'
+,p_field_template=>1610598484065263269
+,p_is_persistent=>'N'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(9001000000000030)
 ,p_name=>'P11_FIRST_NAME'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
 ,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
@@ -2634,7 +3068,61 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_TEXT_FIELD'
 ,p_cSize=>60
 ,p_cMaxlength=>100
-,p_field_template=>2042262243893469891
+,p_field_template=>3033038269190080499
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260606110000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607121852Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9001000000000076)
+,p_name=>'P11_GRADE_ID'
+,p_source_data_type=>'NUMBER'
+,p_is_required=>true
+,p_item_sequence=>80
+,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_prompt=>'Grade'
+,p_source=>'GRADE_ID'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select grade_name d, grade_id r',
+'  from admin.hrms_grades',
+' where is_active = ''Y''',
+' order by grade_name'))
+,p_lov_display_null=>'YES'
+,p_begin_on_new_line=>'N'
+,p_field_template=>1610598484065263269
+,p_is_persistent=>'N'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9001000000000031)
+,p_name=>'P11_LAST_NAME'
+,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_prompt=>'Last Name'
+,p_source=>'LAST_NAME'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>60
+,p_cMaxlength=>100
+,p_field_template=>1610598484065263269
 ,p_is_persistent=>'N'
 ,p_lov_display_extra=>'NO'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
@@ -2648,27 +3136,96 @@ wwv_flow_imp_page.create_page_item(
 ,p_updated_by=>'NUMAN'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(9001000000000031)
-,p_name=>'P11_LAST_NAME'
+ p_id=>wwv_flow_imp.id(9001000000000073)
+,p_name=>'P11_MOBILE'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>30
+,p_is_required=>true
+,p_item_sequence=>44
 ,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
 ,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
-,p_prompt=>'Last Name'
-,p_source=>'LAST_NAME'
+,p_prompt=>'Mobile'
+,p_source=>'MOBILE'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
-,p_cSize=>60
-,p_cMaxlength=>100
-,p_field_template=>2042262243893469891
+,p_cSize=>30
+,p_cMaxlength=>30
+,p_begin_on_new_line=>'N'
+,p_field_template=>1610598484065263269
 ,p_is_persistent=>'N'
 ,p_lov_display_extra=>'NO'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'disabled', 'N',
   'submit_when_enter_pressed', 'N',
-  'subtype', 'TEXT',
+  'subtype', 'TEL',
   'trim_spaces', 'BOTH')).to_clob
-,p_created_on=>wwv_flow_imp.dz('20260606110000Z')
-,p_updated_on=>wwv_flow_imp.dz('20260606110000Z')
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9001000000000079)
+,p_name=>'P11_STATUS'
+,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
+,p_item_sequence=>110
+,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_prompt=>'Status'
+,p_source=>'STATUS'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>'STATIC2:Active;ACTIVE,Inactive;INACTIVE,Terminated;TERMINATED,Suspended;SUSPENDED'
+,p_begin_on_new_line=>'N'
+,p_field_template=>1610598484065263269
+,p_is_persistent=>'N'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9001000000000081)
+,p_name=>'P11_UPDATED_BY'
+,p_source_data_type=>'VARCHAR2'
+,p_item_sequence=>130
+,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_prompt=>'Updated By'
+,p_source=>'UPDATED_BY'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_begin_on_new_line=>'N'
+,p_field_template=>2042262243893469891
+,p_is_persistent=>'N'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'based_on', 'VALUE',
+  'format', 'PLAIN')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9001000000000082)
+,p_name=>'P11_UPDATED_ON'
+,p_source_data_type=>'DATE'
+,p_item_sequence=>140
+,p_item_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_item_source_plug_id=>wwv_flow_imp.id(9001000000000023)
+,p_prompt=>'Updated On'
+,p_source=>'UPDATED_ON'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_begin_on_new_line=>'N'
+,p_field_template=>2042262243893469891
+,p_is_persistent=>'N'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'based_on', 'VALUE',
+  'format', 'PLAIN')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
 ,p_created_by=>'NUMAN'
 ,p_updated_by=>'NUMAN'
 );
@@ -2705,18 +3262,243 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_sequence=>20
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_region_id=>wwv_flow_imp.id(9001000000000023)
-,p_process_type=>'NATIVE_FORM_DML'
-,p_process_name=>'Process form Employee'
-,p_static_id=>'process-form-employee'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'lock_row', 'N',
-  'prevent_lost_updates', 'Y',
-  'return_primary_keys_after_insert', 'N',
-  'target_type', 'REGION_SOURCE')).to_clob
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Process Employee API'
+,p_static_id=>'process-employee-api'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'declare',
+'    l_error_code    number;',
+'    l_error_message varchar2(1000);',
+'    l_response      varchar2(200);',
+'begin',
+'    if :REQUEST = ''DELETE'' then',
+'        ADMIN.HRMS_PKG.deleteEmployee(',
+'            employeeId   => :P11_EMPLOYEE_ID,',
+'            userName     => :APP_USER,',
+'            errorCode    => l_error_code,',
+'            errorMessage => l_error_message,',
+'            response     => l_response);',
+'    elsif :P11_EMPLOYEE_ID is null then',
+'        ADMIN.HRMS_PKG.createEmployee(',
+'            employeeCode     => :P11_EMPLOYEE_CODE,',
+'            firstName        => :P11_FIRST_NAME,',
+'            lastName         => :P11_LAST_NAME,',
+'            cnic             => :P11_CNIC,',
+'            email            => :P11_EMAIL,',
+'            mobile           => :P11_MOBILE,',
+'            departmentId     => :P11_DEPARTMENT_ID,',
+'            designationId    => :P11_DESIGNATION_ID,',
+'            gradeId          => :P11_GRADE_ID,',
+'            employmentTypeId => :P11_EMPLOYMENT_TYPE_ID,',
+'            dateOfJoining    => :P11_DATE_OF_JOINING,',
+'            status           => :P11_STATUS,',
+'            userName         => :APP_USER,',
+'            errorCode        => l_error_code,',
+'            errorMessage     => l_error_message,',
+'            response         => l_response);',
+'    else',
+'        ADMIN.HRMS_PKG.updateEmployee(',
+'            employeeId       => :P11_EMPLOYEE_ID,',
+'            employeeCode     => :P11_EMPLOYEE_CODE,',
+'            firstName        => :P11_FIRST_NAME,',
+'            lastName         => :P11_LAST_NAME,',
+'            cnic             => :P11_CNIC,',
+'            email            => :P11_EMAIL,',
+'            mobile           => :P11_MOBILE,',
+'            departmentId     => :P11_DEPARTMENT_ID,',
+'            designationId    => :P11_DESIGNATION_ID,',
+'            gradeId          => :P11_GRADE_ID,',
+'            employmentTypeId => :P11_EMPLOYMENT_TYPE_ID,',
+'            dateOfJoining    => :P11_DATE_OF_JOINING,',
+'            status           => :P11_STATUS,',
+'            userName         => :APP_USER,',
+'            errorCode        => l_error_code,',
+'            errorMessage     => l_error_message,',
+'            response         => l_response);',
+'    end if;',
+'',
+'    if l_error_code <> 200 then',
+'        raise_application_error(-20001, l_error_message);',
+'    end if;',
+'',
+'    if :P11_EMPLOYEE_ID is null and l_response is not null then',
+'        :P11_EMPLOYEE_ID := to_number(l_response);',
+'    end if;',
+'end;'))
+,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'Employee profile saved.'
 ,p_internal_uid=>9001000000000035
 ,p_created_on=>wwv_flow_imp.dz('20260606110000Z')
-,p_updated_on=>wwv_flow_imp.dz('20260606110000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+end;
+/
+prompt --application/pages/page_00012
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>12
+,p_name=>'Employee Dashboard'
+,p_alias=>'EMPLOYEE-DASHBOARD'
+,p_step_title=>'Employee Dashboard'
+,p_autocomplete_on_off=>'OFF'
+,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'.hrms-page-heading h1 { margin: 0; font-size: 2rem; font-weight: 650; }',
+'.hrms-page-heading p { max-width: 54rem; margin: .5rem 0 0; color: var(--ut-component-text-muted-color); }',
+'.hrms-eyebrow { color: var(--ut-palette-primary); font-size: .75rem; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }',
+'.hrms-kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }',
+'.hrms-kpi { display: flex; gap: .875rem; align-items: flex-start; min-height: 7rem; padding: 1rem; border: 1px solid var(--ut-component-border-color); border-radius: 8px; background: var(--ut-component-background-color); box-shadow: var(--ut-shadow-s'
+||'m); }',
+'.hrms-kpi .fa { display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 8px; color: var(--ut-palette-primary); background: color-mix(in srgb, var(--ut-palette-primary) 12%, transparent); }',
+'.hrms-kpi strong, .hrms-action-list strong { display: block; margin-bottom: .25rem; font-weight: 650; }',
+'.hrms-kpi p, .hrms-action-list p, .hrms-quick-actions p { margin: 0; color: var(--ut-component-text-muted-color); }',
+'.hrms-action-list { display: grid; gap: 1rem; }',
+'.hrms-action-list > div { display: grid; grid-template-columns: 2rem 1fr; column-gap: .75rem; align-items: start; padding: .75rem 0; border-bottom: 1px solid var(--ut-component-border-color); }',
+'.hrms-action-list > div:last-child { border-bottom: 0; }',
+'.hrms-action-list .fa { color: var(--ut-palette-primary); font-size: 1.125rem; line-height: 1.5; }',
+'.hrms-quick-actions { margin-bottom: .75rem; }',
+'@media (max-width: 900px) { .hrms-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }',
+'@media (max-width: 640px) { .hrms-kpi-grid { grid-template-columns: 1fr; } .hrms-page-heading h1 { font-size: 1.5rem; } }'))
+,p_step_template=>4073832297226169690
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_help_text=>'<p>Use this dashboard to review employee management priorities and move quickly into employee maintenance.</p>'
+,p_page_component_map=>'11'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_last_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9003000000000010)
+,p_plug_name=>'Employee Workspace'
+,p_static_id=>'employee-workspace'
+,p_region_template_options=>'#DEFAULT#:t-HeroRegion--hideIcon'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>2675494171183407654
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_plug_item_display_point=>'ABOVE'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'<div class="hrms-page-heading">',
+'  <div>',
+'    <div class="hrms-eyebrow">HRMS</div>',
+'    <h1>Employee Dashboard</h1>',
+'    <p>Manage employee profiles, organization assignments, employment status, and onboarding details from one focused workspace.</p>',
+'  </div>',
+'</div>'))
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9003000000000012)
+,p_plug_name=>'Operational Focus'
+,p_static_id=>'operational-focus'
+,p_region_template_options=>'#DEFAULT#:t-Region--noBorder:t-Region--scrollBody'
+,p_plug_template=>2102002977963900996
+,p_plug_display_sequence=>30
+,p_plug_new_grid_row=>false
+,p_plug_grid_column_span=>8
+,p_plug_item_display_point=>'ABOVE'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'<div class="hrms-action-list">',
+'  <div><span class="fa fa-search" aria-hidden="true"></span><strong>Find employee records quickly</strong><p>Use the directory to filter by department, designation, grade, employment type, and status.</p></div>',
+'  <div><span class="fa fa-pencil-square-o" aria-hidden="true"></span><strong>Maintain complete profiles</strong><p>Capture identity, contact, organization, and employment details in a compact responsive form.</p></div>',
+'  <div><span class="fa fa-mobile" aria-hidden="true"></span><strong>Use on desktop or mobile</strong><p>The layout keeps primary actions visible and stacks supporting content on smaller screens.</p></div>',
+'</div>'))
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9003000000000013)
+,p_plug_name=>'Quick Actions'
+,p_static_id=>'quick-actions'
+,p_region_template_options=>'#DEFAULT#:t-Region--noBorder:t-Region--scrollBody'
+,p_plug_template=>2102002977963900996
+,p_plug_display_sequence=>40
+,p_plug_new_grid_row=>false
+,p_plug_grid_column_span=>4
+,p_plug_item_display_point=>'ABOVE'
+,p_plug_source=>'<div class="hrms-quick-actions"><p>Start with the most common employee workflows.</p></div>'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9003000000000011)
+,p_plug_name=>'Workforce Overview'
+,p_static_id=>'workforce-overview'
+,p_region_template_options=>'#DEFAULT#:t-Region--noBorder:t-Region--scrollBody'
+,p_plug_template=>2102002977963900996
+,p_plug_display_sequence=>20
+,p_plug_item_display_point=>'ABOVE'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'<div class="hrms-kpi-grid">',
+'  <article class="hrms-kpi"><span class="fa fa-users" aria-hidden="true"></span><div><strong>Total Employees</strong><p>Review workforce volume and growth.</p></div></article>',
+'  <article class="hrms-kpi"><span class="fa fa-user-check" aria-hidden="true"></span><div><strong>Active Employees</strong><p>Track currently active employee records.</p></div></article>',
+'  <article class="hrms-kpi"><span class="fa fa-building" aria-hidden="true"></span><div><strong>Departments</strong><p>Monitor staffing distribution by department.</p></div></article>',
+'  <article class="hrms-kpi"><span class="fa fa-id-card-o" aria-hidden="true"></span><div><strong>Pending Updates</strong><p>Prioritize incomplete or recently changed profiles.</p></div></article>',
+'</div>'))
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9003000000000014)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(9003000000000013)
+,p_button_name=>'ADD_EMPLOYEE'
+,p_static_id=>'dashboard-add-employee'
+,p_show_as_disabled=>false
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft:t-Button--stretch'
+,p_button_template_id=>2084305881903810008
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Add Employee'
+,p_button_position=>'EDIT'
+,p_button_redirect_url=>'f?p=&APP_ID.:11:&APP_SESSION.::&DEBUG.:RP,11::'
+,p_icon_css_classes=>'fa-plus'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9003000000000015)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(9003000000000013)
+,p_button_name=>'VIEW_DIRECTORY'
+,p_static_id=>'dashboard-view-directory'
+,p_show_as_disabled=>false
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft:t-Button--stretch'
+,p_button_template_id=>2084305881903810008
+,p_button_image_alt=>'View Directory'
+,p_button_position=>'EDIT'
+,p_button_redirect_url=>'f?p=&APP_ID.:10:&APP_SESSION.::&DEBUG.:RP,10::'
+,p_icon_css_classes=>'fa-table'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
 ,p_created_by=>'NUMAN'
 ,p_updated_by=>'NUMAN'
 );
@@ -4030,6 +4812,1855 @@ wwv_flow_imp_page.create_page_process(
 ,p_internal_uid=>9002000000000068
 ,p_created_on=>wwv_flow_imp.dz('20260606112000Z')
 ,p_updated_on=>wwv_flow_imp.dz('20260606112000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+end;
+/
+prompt --application/pages/page_00030
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>30
+,p_name=>'Departments'
+,p_alias=>'DEPARTMENTS'
+,p_step_title=>'Departments'
+,p_autocomplete_on_off=>'OFF'
+,p_step_template=>4073832297226169690
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_help_text=>'<p>Maintain HRMS departments using the HRMS_PKG department APIs.</p>'
+,p_page_component_map=>'18'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_last_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9004000000000010)
+,p_plug_name=>'Departments'
+,p_static_id=>'departments-report'
+,p_region_template_options=>'#DEFAULT#:t-IRR-region--noBorders'
+,p_plug_template=>2102002977963900996
+,p_plug_display_sequence=>10
+,p_plug_item_display_point=>'ABOVE'
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select d.department_id,',
+'       d.department_code,',
+'       d.department_name,',
+'       (select p.department_name from admin.hrms_departments p where p.department_id = d.parent_department_id) parent_department,',
+'       (select l.location_name from admin.hrms_locations l where l.location_id = d.location_id) location_name,',
+'       d.cost_center,',
+'       d.is_active',
+'  from admin.hrms_departments d'))
+,p_plug_source_type=>'NATIVE_IR'
+,p_prn_content_disposition=>'ATTACHMENT'
+,p_prn_units=>'INCHES'
+,p_prn_paper_size=>'LETTER'
+,p_prn_width=>11
+,p_prn_height=>8.5
+,p_prn_orientation=>'HORIZONTAL'
+,p_prn_page_header_font_color=>'#000000'
+,p_prn_page_header_font_family=>'Helvetica'
+,p_prn_page_header_font_weight=>'normal'
+,p_prn_page_header_font_size=>'12'
+,p_prn_page_footer_font_color=>'#000000'
+,p_prn_page_footer_font_family=>'Helvetica'
+,p_prn_page_footer_font_weight=>'normal'
+,p_prn_page_footer_font_size=>'12'
+,p_prn_header_bg_color=>'#EEEEEE'
+,p_prn_header_font_color=>'#000000'
+,p_prn_header_font_family=>'Helvetica'
+,p_prn_header_font_weight=>'bold'
+,p_prn_header_font_size=>'10'
+,p_prn_body_bg_color=>'#FFFFFF'
+,p_prn_body_font_color=>'#000000'
+,p_prn_body_font_family=>'Helvetica'
+,p_prn_body_font_weight=>'normal'
+,p_prn_body_font_size=>'10'
+,p_prn_border_width=>.5
+,p_prn_page_header_alignment=>'CENTER'
+,p_prn_page_footer_alignment=>'CENTER'
+,p_prn_border_color=>'#666666'
+,p_ai_enabled=>false
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet(
+ p_id=>wwv_flow_imp.id(9004000000000011)
+,p_max_row_count_message=>'The maximum row count for this report is #MAX_ROW_COUNT# rows. Please apply a filter to reduce the number of records in your query.'
+,p_no_data_found_message=>'No departments found.'
+,p_pagination_type=>'ROWS_X_TO_Y'
+,p_pagination_display_pos=>'BOTTOM_RIGHT'
+,p_report_list_mode=>'TABS'
+,p_lazy_loading=>false
+,p_show_detail_link=>'C'
+,p_show_notify=>'Y'
+,p_download_formats=>'CSV:HTML:XLSX:PDF'
+,p_enable_mail_download=>'Y'
+,p_detail_link=>'f?p=&APP_ID.:34:&APP_SESSION.::&DEBUG.:RP:P34_DEPARTMENT_ID:\#DEPARTMENT_ID#\'
+,p_detail_link_text=>'<span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>'
+,p_internal_uid=>9004000000000011
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9004000000000017)
+,p_db_column_name=>'COST_CENTER'
+,p_display_order=>5
+,p_column_identifier=>'F'
+,p_column_label=>'Cost Center'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9004000000000013)
+,p_db_column_name=>'DEPARTMENT_CODE'
+,p_display_order=>1
+,p_column_identifier=>'B'
+,p_column_label=>'Code'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'Y'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9004000000000012)
+,p_db_column_name=>'DEPARTMENT_ID'
+,p_display_order=>0
+,p_is_primary_key=>'Y'
+,p_column_identifier=>'A'
+,p_column_label=>'Department ID'
+,p_column_type=>'NUMBER'
+,p_display_text_as=>'HIDDEN_ESCAPE_SC'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9004000000000014)
+,p_db_column_name=>'DEPARTMENT_NAME'
+,p_display_order=>2
+,p_column_identifier=>'C'
+,p_column_label=>'Department'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9004000000000018)
+,p_db_column_name=>'IS_ACTIVE'
+,p_display_order=>6
+,p_column_identifier=>'G'
+,p_column_label=>'Active'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9004000000000016)
+,p_db_column_name=>'LOCATION_NAME'
+,p_display_order=>4
+,p_column_identifier=>'E'
+,p_column_label=>'Location'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9004000000000015)
+,p_db_column_name=>'PARENT_DEPARTMENT'
+,p_display_order=>3
+,p_column_identifier=>'D'
+,p_column_label=>'Parent Department'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_rpt(
+ p_id=>wwv_flow_imp.id(9004000000000019)
+,p_application_user=>'APXWS_DEFAULT'
+,p_report_seq=>10
+,p_report_alias=>'primary'
+,p_status=>'PUBLIC'
+,p_is_default=>'Y'
+,p_report_columns=>'DEPARTMENT_CODE:DEPARTMENT_NAME:PARENT_DEPARTMENT:LOCATION_NAME:COST_CENTER:IS_ACTIVE'
+,p_sort_column_1=>'DEPARTMENT_CODE'
+,p_sort_direction_1=>'ASC'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9004000000000021)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(9004000000000010)
+,p_button_name=>'ADD_DEPARTMENT'
+,p_static_id=>'add-department'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
+,p_button_template_id=>2084305881903810008
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Add Department'
+,p_button_position=>'RIGHT_OF_IR_SEARCH_BAR'
+,p_button_redirect_url=>'f?p=&APP_ID.:34:&APP_SESSION.::&DEBUG.:RP,34::'
+,p_icon_css_classes=>'fa-plus'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(9004000000000042)
+,p_name=>'Refresh Departments'
+,p_static_id=>'refresh-departments'
+,p_event_sequence=>10
+,p_triggering_element_type=>'REGION'
+,p_triggering_region_id=>wwv_flow_imp.id(9004000000000010)
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'apexafterclosedialog'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(9004000000000043)
+,p_event_id=>wwv_flow_imp.id(9004000000000042)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_static_id=>'refresh-departments-report'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(9004000000000010)
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'maintain_pagination', 'N')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+end;
+/
+prompt --application/pages/page_00031
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>31
+,p_name=>'Designations'
+,p_alias=>'DESIGNATIONS'
+,p_step_title=>'Designations'
+,p_autocomplete_on_off=>'OFF'
+,p_step_template=>4073832297226169690
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_help_text=>'<p>Maintain HRMS designations using the HRMS_PKG designation APIs.</p>'
+,p_page_component_map=>'18'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_last_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9005000000000020)
+,p_plug_name=>'Designation Details'
+,p_static_id=>'designation-details'
+,p_region_template_options=>'#DEFAULT#:t-Form--stretchInputs'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>4502917002193490937
+,p_plug_display_sequence=>20
+,p_plug_item_display_point=>'ABOVE'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9005000000000010)
+,p_plug_name=>'Designations'
+,p_static_id=>'designations-report'
+,p_region_template_options=>'#DEFAULT#:t-IRR-region--noBorders'
+,p_plug_template=>2102002977963900996
+,p_plug_display_sequence=>10
+,p_plug_item_display_point=>'ABOVE'
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select designation_id,',
+'       designation_code,',
+'       designation_name,',
+'       is_active',
+'  from admin.hrms_designations'))
+,p_plug_source_type=>'NATIVE_IR'
+,p_prn_content_disposition=>'ATTACHMENT'
+,p_prn_units=>'INCHES'
+,p_prn_paper_size=>'LETTER'
+,p_prn_width=>11
+,p_prn_height=>8.5
+,p_prn_orientation=>'HORIZONTAL'
+,p_prn_page_header_font_color=>'#000000'
+,p_prn_page_header_font_family=>'Helvetica'
+,p_prn_page_header_font_weight=>'normal'
+,p_prn_page_header_font_size=>'12'
+,p_prn_page_footer_font_color=>'#000000'
+,p_prn_page_footer_font_family=>'Helvetica'
+,p_prn_page_footer_font_weight=>'normal'
+,p_prn_page_footer_font_size=>'12'
+,p_prn_header_bg_color=>'#EEEEEE'
+,p_prn_header_font_color=>'#000000'
+,p_prn_header_font_family=>'Helvetica'
+,p_prn_header_font_weight=>'bold'
+,p_prn_header_font_size=>'10'
+,p_prn_body_bg_color=>'#FFFFFF'
+,p_prn_body_font_color=>'#000000'
+,p_prn_body_font_family=>'Helvetica'
+,p_prn_body_font_weight=>'normal'
+,p_prn_body_font_size=>'10'
+,p_prn_border_width=>.5
+,p_prn_page_header_alignment=>'CENTER'
+,p_prn_page_footer_alignment=>'CENTER'
+,p_prn_border_color=>'#666666'
+,p_ai_enabled=>false
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet(
+ p_id=>wwv_flow_imp.id(9005000000000011)
+,p_no_data_found_message=>'No designations found.'
+,p_pagination_type=>'ROWS_X_TO_Y'
+,p_pagination_display_pos=>'BOTTOM_RIGHT'
+,p_report_list_mode=>'TABS'
+,p_lazy_loading=>false
+,p_show_detail_link=>'C'
+,p_show_notify=>'Y'
+,p_download_formats=>'CSV:HTML:XLSX:PDF'
+,p_enable_mail_download=>'Y'
+,p_detail_link=>'f?p=&APP_ID.:31:&APP_SESSION.::&DEBUG.:RP:P31_DESIGNATION_ID:\#DESIGNATION_ID#\'
+,p_detail_link_text=>'<span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>'
+,p_internal_uid=>9005000000000011
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9005000000000013)
+,p_db_column_name=>'DESIGNATION_CODE'
+,p_display_order=>1
+,p_column_identifier=>'B'
+,p_column_label=>'Code'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'Y'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9005000000000012)
+,p_db_column_name=>'DESIGNATION_ID'
+,p_display_order=>0
+,p_is_primary_key=>'Y'
+,p_column_identifier=>'A'
+,p_column_label=>'Designation ID'
+,p_column_type=>'NUMBER'
+,p_display_text_as=>'HIDDEN_ESCAPE_SC'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9005000000000014)
+,p_db_column_name=>'DESIGNATION_NAME'
+,p_display_order=>2
+,p_column_identifier=>'C'
+,p_column_label=>'Designation'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9005000000000015)
+,p_db_column_name=>'IS_ACTIVE'
+,p_display_order=>3
+,p_column_identifier=>'D'
+,p_column_label=>'Active'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_rpt(
+ p_id=>wwv_flow_imp.id(9005000000000016)
+,p_application_user=>'APXWS_DEFAULT'
+,p_report_seq=>10
+,p_report_alias=>'primary'
+,p_status=>'PUBLIC'
+,p_is_default=>'Y'
+,p_report_columns=>'DESIGNATION_CODE:DESIGNATION_NAME:IS_ACTIVE'
+,p_sort_column_1=>'DESIGNATION_CODE'
+,p_sort_direction_1=>'ASC'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9005000000000021)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(9005000000000010)
+,p_button_name=>'ADD_DESIGNATION'
+,p_static_id=>'add-designation'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
+,p_button_template_id=>2084305881903810008
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Add Designation'
+,p_button_position=>'RIGHT_OF_IR_SEARCH_BAR'
+,p_button_redirect_url=>'f?p=&APP_ID.:31:&APP_SESSION.::&DEBUG.:RP,31::'
+,p_icon_css_classes=>'fa-plus'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9005000000000022)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(9005000000000020)
+,p_button_name=>'CREATE'
+,p_static_id=>'create'
+,p_button_action=>'SUBMIT'
+,p_button_template_id=>4073839297780169708
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Create'
+,p_button_position=>'CREATE'
+,p_button_condition=>'P31_DESIGNATION_ID'
+,p_button_condition_type=>'ITEM_IS_NULL'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9005000000000024)
+,p_button_sequence=>40
+,p_button_plug_id=>wwv_flow_imp.id(9005000000000020)
+,p_button_name=>'DELETE'
+,p_static_id=>'delete'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#:t-Button--danger:t-Button--simple'
+,p_button_template_id=>4073839297780169708
+,p_button_image_alt=>'Delete'
+,p_button_position=>'EDIT'
+,p_button_execute_validations=>'N'
+,p_confirm_message=>'&APP_TEXT$DELETE_MSG!RAW.'
+,p_confirm_style=>'danger'
+,p_button_condition=>'P31_DESIGNATION_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9005000000000023)
+,p_button_sequence=>30
+,p_button_plug_id=>wwv_flow_imp.id(9005000000000020)
+,p_button_name=>'SAVE'
+,p_static_id=>'save'
+,p_button_action=>'SUBMIT'
+,p_button_template_id=>4073839297780169708
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Apply Changes'
+,p_button_position=>'CREATE'
+,p_button_condition=>'P31_DESIGNATION_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9005000000000031)
+,p_name=>'P31_DESIGNATION_CODE'
+,p_is_required=>true
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(9005000000000020)
+,p_prompt=>'Designation Code'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_cMaxlength=>30
+,p_field_template=>1610598484065263269
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9005000000000030)
+,p_name=>'P31_DESIGNATION_ID'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(9005000000000020)
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_lov_display_extra=>'NO'
+,p_protection_level=>'S'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'value_protected', 'Y')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9005000000000032)
+,p_name=>'P31_DESIGNATION_NAME'
+,p_is_required=>true
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(9005000000000020)
+,p_prompt=>'Designation Name'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>60
+,p_cMaxlength=>200
+,p_begin_on_new_line=>'N'
+,p_field_template=>1610598484065263269
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(9005000000000040)
+,p_process_sequence=>10
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Load Designation'
+,p_static_id=>'load-designation'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'if :P31_DESIGNATION_ID is not null then',
+'    select designation_code, designation_name',
+'      into :P31_DESIGNATION_CODE, :P31_DESIGNATION_NAME',
+'      from admin.hrms_designations',
+'     where designation_id = :P31_DESIGNATION_ID;',
+'end if;'))
+,p_process_clob_language=>'PLSQL'
+,p_internal_uid=>9005000000000040
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(9005000000000041)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Process Designation API'
+,p_static_id=>'process-designation-api'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'declare',
+'    l_error_code    number;',
+'    l_error_message varchar2(1000);',
+'    l_response      varchar2(200);',
+'begin',
+'    if :REQUEST = ''DELETE'' then',
+'        ADMIN.HRMS_PKG.deleteDesignation(:P31_DESIGNATION_ID, :APP_USER, l_error_code, l_error_message, l_response);',
+'    elsif :P31_DESIGNATION_ID is null then',
+'        ADMIN.HRMS_PKG.createDesignation(:P31_DESIGNATION_CODE, :P31_DESIGNATION_NAME, :APP_USER, l_error_code, l_error_message, l_response);',
+'    else',
+'        ADMIN.HRMS_PKG.updateDesignation(:P31_DESIGNATION_ID, :P31_DESIGNATION_CODE, :P31_DESIGNATION_NAME, :APP_USER, l_error_code, l_error_message, l_response);',
+'    end if;',
+'    if l_error_code <> 200 then',
+'        raise_application_error(-20001, l_error_message);',
+'    end if;',
+'    if :REQUEST = ''DELETE'' then',
+'        :P31_DESIGNATION_ID := null;',
+'    elsif :P31_DESIGNATION_ID is null and l_response is not null then',
+'        :P31_DESIGNATION_ID := to_number(l_response);',
+'    end if;',
+'end;'))
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'Designation saved.'
+,p_internal_uid=>9005000000000041
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+end;
+/
+prompt --application/pages/page_00032
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>32
+,p_name=>'Grades'
+,p_alias=>'GRADES'
+,p_step_title=>'Grades'
+,p_autocomplete_on_off=>'OFF'
+,p_step_template=>4073832297226169690
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_help_text=>'<p>Maintain HRMS grades using the HRMS_PKG grade APIs.</p>'
+,p_page_component_map=>'18'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_last_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9006000000000020)
+,p_plug_name=>'Grade Details'
+,p_static_id=>'grade-details'
+,p_region_template_options=>'#DEFAULT#:t-Form--stretchInputs'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>4502917002193490937
+,p_plug_display_sequence=>20
+,p_plug_item_display_point=>'ABOVE'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9006000000000010)
+,p_plug_name=>'Grades'
+,p_static_id=>'grades-report'
+,p_region_template_options=>'#DEFAULT#:t-IRR-region--noBorders'
+,p_plug_template=>2102002977963900996
+,p_plug_display_sequence=>10
+,p_plug_item_display_point=>'ABOVE'
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select grade_id,',
+'       grade_code,',
+'       grade_name,',
+'       min_salary,',
+'       max_salary,',
+'       is_active',
+'  from admin.hrms_grades'))
+,p_plug_source_type=>'NATIVE_IR'
+,p_prn_content_disposition=>'ATTACHMENT'
+,p_prn_units=>'INCHES'
+,p_prn_paper_size=>'LETTER'
+,p_prn_width=>11
+,p_prn_height=>8.5
+,p_prn_orientation=>'HORIZONTAL'
+,p_prn_page_header_font_color=>'#000000'
+,p_prn_page_header_font_family=>'Helvetica'
+,p_prn_page_header_font_weight=>'normal'
+,p_prn_page_header_font_size=>'12'
+,p_prn_page_footer_font_color=>'#000000'
+,p_prn_page_footer_font_family=>'Helvetica'
+,p_prn_page_footer_font_weight=>'normal'
+,p_prn_page_footer_font_size=>'12'
+,p_prn_header_bg_color=>'#EEEEEE'
+,p_prn_header_font_color=>'#000000'
+,p_prn_header_font_family=>'Helvetica'
+,p_prn_header_font_weight=>'bold'
+,p_prn_header_font_size=>'10'
+,p_prn_body_bg_color=>'#FFFFFF'
+,p_prn_body_font_color=>'#000000'
+,p_prn_body_font_family=>'Helvetica'
+,p_prn_body_font_weight=>'normal'
+,p_prn_body_font_size=>'10'
+,p_prn_border_width=>.5
+,p_prn_page_header_alignment=>'CENTER'
+,p_prn_page_footer_alignment=>'CENTER'
+,p_prn_border_color=>'#666666'
+,p_ai_enabled=>false
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet(
+ p_id=>wwv_flow_imp.id(9006000000000011)
+,p_no_data_found_message=>'No grades found.'
+,p_pagination_type=>'ROWS_X_TO_Y'
+,p_pagination_display_pos=>'BOTTOM_RIGHT'
+,p_report_list_mode=>'TABS'
+,p_lazy_loading=>false
+,p_show_detail_link=>'C'
+,p_show_notify=>'Y'
+,p_download_formats=>'CSV:HTML:XLSX:PDF'
+,p_enable_mail_download=>'Y'
+,p_detail_link=>'f?p=&APP_ID.:32:&APP_SESSION.::&DEBUG.:RP:P32_GRADE_ID:\#GRADE_ID#\'
+,p_detail_link_text=>'<span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>'
+,p_internal_uid=>9006000000000011
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9006000000000013)
+,p_db_column_name=>'GRADE_CODE'
+,p_display_order=>1
+,p_column_identifier=>'B'
+,p_column_label=>'Code'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'Y'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9006000000000012)
+,p_db_column_name=>'GRADE_ID'
+,p_display_order=>0
+,p_is_primary_key=>'Y'
+,p_column_identifier=>'A'
+,p_column_label=>'Grade ID'
+,p_column_type=>'NUMBER'
+,p_display_text_as=>'HIDDEN_ESCAPE_SC'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9006000000000014)
+,p_db_column_name=>'GRADE_NAME'
+,p_display_order=>2
+,p_column_identifier=>'C'
+,p_column_label=>'Grade'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9006000000000017)
+,p_db_column_name=>'IS_ACTIVE'
+,p_display_order=>5
+,p_column_identifier=>'F'
+,p_column_label=>'Active'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9006000000000016)
+,p_db_column_name=>'MAX_SALARY'
+,p_display_order=>4
+,p_column_identifier=>'E'
+,p_column_label=>'Max Salary'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9006000000000015)
+,p_db_column_name=>'MIN_SALARY'
+,p_display_order=>3
+,p_column_identifier=>'D'
+,p_column_label=>'Min Salary'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_rpt(
+ p_id=>wwv_flow_imp.id(9006000000000018)
+,p_application_user=>'APXWS_DEFAULT'
+,p_report_seq=>10
+,p_report_alias=>'primary'
+,p_status=>'PUBLIC'
+,p_is_default=>'Y'
+,p_report_columns=>'GRADE_CODE:GRADE_NAME:MIN_SALARY:MAX_SALARY:IS_ACTIVE'
+,p_sort_column_1=>'GRADE_CODE'
+,p_sort_direction_1=>'ASC'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9006000000000021)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(9006000000000010)
+,p_button_name=>'ADD_GRADE'
+,p_static_id=>'add-grade'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
+,p_button_template_id=>2084305881903810008
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Add Grade'
+,p_button_position=>'RIGHT_OF_IR_SEARCH_BAR'
+,p_button_redirect_url=>'f?p=&APP_ID.:32:&APP_SESSION.::&DEBUG.:RP,32::'
+,p_icon_css_classes=>'fa-plus'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9006000000000022)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(9006000000000020)
+,p_button_name=>'CREATE'
+,p_static_id=>'create'
+,p_button_action=>'SUBMIT'
+,p_button_template_id=>4073839297780169708
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Create'
+,p_button_position=>'CREATE'
+,p_button_condition=>'P32_GRADE_ID'
+,p_button_condition_type=>'ITEM_IS_NULL'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9006000000000024)
+,p_button_sequence=>40
+,p_button_plug_id=>wwv_flow_imp.id(9006000000000020)
+,p_button_name=>'DELETE'
+,p_static_id=>'delete'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#:t-Button--danger:t-Button--simple'
+,p_button_template_id=>4073839297780169708
+,p_button_image_alt=>'Delete'
+,p_button_position=>'EDIT'
+,p_button_execute_validations=>'N'
+,p_confirm_message=>'&APP_TEXT$DELETE_MSG!RAW.'
+,p_confirm_style=>'danger'
+,p_button_condition=>'P32_GRADE_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9006000000000023)
+,p_button_sequence=>30
+,p_button_plug_id=>wwv_flow_imp.id(9006000000000020)
+,p_button_name=>'SAVE'
+,p_static_id=>'save'
+,p_button_action=>'SUBMIT'
+,p_button_template_id=>4073839297780169708
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Apply Changes'
+,p_button_position=>'CREATE'
+,p_button_condition=>'P32_GRADE_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9006000000000031)
+,p_name=>'P32_GRADE_CODE'
+,p_is_required=>true
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(9006000000000020)
+,p_prompt=>'Grade Code'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_cMaxlength=>30
+,p_field_template=>1610598484065263269
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9006000000000030)
+,p_name=>'P32_GRADE_ID'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(9006000000000020)
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_lov_display_extra=>'NO'
+,p_protection_level=>'S'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'value_protected', 'Y')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9006000000000032)
+,p_name=>'P32_GRADE_NAME'
+,p_is_required=>true
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(9006000000000020)
+,p_prompt=>'Grade Name'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>60
+,p_cMaxlength=>200
+,p_begin_on_new_line=>'N'
+,p_field_template=>1610598484065263269
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9006000000000034)
+,p_name=>'P32_MAX_SALARY'
+,p_item_sequence=>50
+,p_item_plug_id=>wwv_flow_imp.id(9006000000000020)
+,p_prompt=>'Max Salary'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>30
+,p_begin_on_new_line=>'N'
+,p_field_template=>2042262243893469891
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'number_alignment', 'right',
+  'virtual_keyboard', 'decimal')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9006000000000033)
+,p_name=>'P32_MIN_SALARY'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(9006000000000020)
+,p_prompt=>'Min Salary'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>30
+,p_begin_on_new_line=>'N'
+,p_field_template=>2042262243893469891
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'number_alignment', 'right',
+  'virtual_keyboard', 'decimal')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(9006000000000040)
+,p_process_sequence=>10
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Load Grade'
+,p_static_id=>'load-grade'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'if :P32_GRADE_ID is not null then',
+'    select grade_code, grade_name, min_salary, max_salary',
+'      into :P32_GRADE_CODE, :P32_GRADE_NAME, :P32_MIN_SALARY, :P32_MAX_SALARY',
+'      from admin.hrms_grades',
+'     where grade_id = :P32_GRADE_ID;',
+'end if;'))
+,p_process_clob_language=>'PLSQL'
+,p_internal_uid=>9006000000000040
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(9006000000000041)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Process Grade API'
+,p_static_id=>'process-grade-api'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'declare',
+'    l_error_code    number;',
+'    l_error_message varchar2(1000);',
+'    l_response      varchar2(200);',
+'begin',
+'    if :REQUEST = ''DELETE'' then',
+'        ADMIN.HRMS_PKG.deleteGrade(:P32_GRADE_ID, :APP_USER, l_error_code, l_error_message, l_response);',
+'    elsif :P32_GRADE_ID is null then',
+'        ADMIN.HRMS_PKG.createGrade(:P32_GRADE_CODE, :P32_GRADE_NAME, :P32_MIN_SALARY, :P32_MAX_SALARY, :APP_USER, l_error_code, l_error_message, l_response);',
+'    else',
+'        ADMIN.HRMS_PKG.updateGrade(:P32_GRADE_ID, :P32_GRADE_CODE, :P32_GRADE_NAME, :P32_MIN_SALARY, :P32_MAX_SALARY, :APP_USER, l_error_code, l_error_message, l_response);',
+'    end if;',
+'    if l_error_code <> 200 then',
+'        raise_application_error(-20001, l_error_message);',
+'    end if;',
+'    if :REQUEST = ''DELETE'' then',
+'        :P32_GRADE_ID := null;',
+'    elsif :P32_GRADE_ID is null and l_response is not null then',
+'        :P32_GRADE_ID := to_number(l_response);',
+'    end if;',
+'end;'))
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'Grade saved.'
+,p_internal_uid=>9006000000000041
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+end;
+/
+prompt --application/pages/page_00033
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>33
+,p_name=>'Employment Types'
+,p_alias=>'EMPLOYMENT-TYPES'
+,p_step_title=>'Employment Types'
+,p_autocomplete_on_off=>'OFF'
+,p_step_template=>4073832297226169690
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_help_text=>'<p>Maintain HRMS employment types using the HRMS_PKG employment type APIs.</p>'
+,p_page_component_map=>'18'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_last_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9007000000000020)
+,p_plug_name=>'Employment Type Details'
+,p_static_id=>'employment-type-details'
+,p_region_template_options=>'#DEFAULT#:t-Form--stretchInputs'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>4502917002193490937
+,p_plug_display_sequence=>20
+,p_plug_item_display_point=>'ABOVE'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9007000000000010)
+,p_plug_name=>'Employment Types'
+,p_static_id=>'employment-types-report'
+,p_region_template_options=>'#DEFAULT#:t-IRR-region--noBorders'
+,p_plug_template=>2102002977963900996
+,p_plug_display_sequence=>10
+,p_plug_item_display_point=>'ABOVE'
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select employment_type_id,',
+'       employment_type_code,',
+'       employment_type_name,',
+'       is_active',
+'  from admin.hrms_employment_types'))
+,p_plug_source_type=>'NATIVE_IR'
+,p_prn_content_disposition=>'ATTACHMENT'
+,p_prn_units=>'INCHES'
+,p_prn_paper_size=>'LETTER'
+,p_prn_width=>11
+,p_prn_height=>8.5
+,p_prn_orientation=>'HORIZONTAL'
+,p_prn_page_header_font_color=>'#000000'
+,p_prn_page_header_font_family=>'Helvetica'
+,p_prn_page_header_font_weight=>'normal'
+,p_prn_page_header_font_size=>'12'
+,p_prn_page_footer_font_color=>'#000000'
+,p_prn_page_footer_font_family=>'Helvetica'
+,p_prn_page_footer_font_weight=>'normal'
+,p_prn_page_footer_font_size=>'12'
+,p_prn_header_bg_color=>'#EEEEEE'
+,p_prn_header_font_color=>'#000000'
+,p_prn_header_font_family=>'Helvetica'
+,p_prn_header_font_weight=>'bold'
+,p_prn_header_font_size=>'10'
+,p_prn_body_bg_color=>'#FFFFFF'
+,p_prn_body_font_color=>'#000000'
+,p_prn_body_font_family=>'Helvetica'
+,p_prn_body_font_weight=>'normal'
+,p_prn_body_font_size=>'10'
+,p_prn_border_width=>.5
+,p_prn_page_header_alignment=>'CENTER'
+,p_prn_page_footer_alignment=>'CENTER'
+,p_prn_border_color=>'#666666'
+,p_ai_enabled=>false
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet(
+ p_id=>wwv_flow_imp.id(9007000000000011)
+,p_no_data_found_message=>'No employment types found.'
+,p_pagination_type=>'ROWS_X_TO_Y'
+,p_pagination_display_pos=>'BOTTOM_RIGHT'
+,p_report_list_mode=>'TABS'
+,p_lazy_loading=>false
+,p_show_detail_link=>'C'
+,p_show_notify=>'Y'
+,p_download_formats=>'CSV:HTML:XLSX:PDF'
+,p_enable_mail_download=>'Y'
+,p_detail_link=>'f?p=&APP_ID.:33:&APP_SESSION.::&DEBUG.:RP:P33_EMPLOYMENT_TYPE_ID:\#EMPLOYMENT_TYPE_ID#\'
+,p_detail_link_text=>'<span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>'
+,p_internal_uid=>9007000000000011
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9007000000000013)
+,p_db_column_name=>'EMPLOYMENT_TYPE_CODE'
+,p_display_order=>1
+,p_column_identifier=>'B'
+,p_column_label=>'Code'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'Y'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9007000000000012)
+,p_db_column_name=>'EMPLOYMENT_TYPE_ID'
+,p_display_order=>0
+,p_is_primary_key=>'Y'
+,p_column_identifier=>'A'
+,p_column_label=>'Employment Type ID'
+,p_column_type=>'NUMBER'
+,p_display_text_as=>'HIDDEN_ESCAPE_SC'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9007000000000014)
+,p_db_column_name=>'EMPLOYMENT_TYPE_NAME'
+,p_display_order=>2
+,p_column_identifier=>'C'
+,p_column_label=>'Employment Type'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(9007000000000015)
+,p_db_column_name=>'IS_ACTIVE'
+,p_display_order=>3
+,p_column_identifier=>'D'
+,p_column_label=>'Active'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+,p_available_clientside=>'N'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_worksheet_rpt(
+ p_id=>wwv_flow_imp.id(9007000000000016)
+,p_application_user=>'APXWS_DEFAULT'
+,p_report_seq=>10
+,p_report_alias=>'primary'
+,p_status=>'PUBLIC'
+,p_is_default=>'Y'
+,p_report_columns=>'EMPLOYMENT_TYPE_CODE:EMPLOYMENT_TYPE_NAME:IS_ACTIVE'
+,p_sort_column_1=>'EMPLOYMENT_TYPE_CODE'
+,p_sort_direction_1=>'ASC'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9007000000000021)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(9007000000000010)
+,p_button_name=>'ADD_EMPLOYMENT_TYPE'
+,p_static_id=>'add-employment-type'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
+,p_button_template_id=>2084305881903810008
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Add Employment Type'
+,p_button_position=>'RIGHT_OF_IR_SEARCH_BAR'
+,p_button_redirect_url=>'f?p=&APP_ID.:33:&APP_SESSION.::&DEBUG.:RP,33::'
+,p_icon_css_classes=>'fa-plus'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9007000000000022)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(9007000000000020)
+,p_button_name=>'CREATE'
+,p_static_id=>'create'
+,p_button_action=>'SUBMIT'
+,p_button_template_id=>4073839297780169708
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Create'
+,p_button_position=>'CREATE'
+,p_button_condition=>'P33_EMPLOYMENT_TYPE_ID'
+,p_button_condition_type=>'ITEM_IS_NULL'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9007000000000024)
+,p_button_sequence=>40
+,p_button_plug_id=>wwv_flow_imp.id(9007000000000020)
+,p_button_name=>'DELETE'
+,p_static_id=>'delete'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#:t-Button--danger:t-Button--simple'
+,p_button_template_id=>4073839297780169708
+,p_button_image_alt=>'Delete'
+,p_button_position=>'EDIT'
+,p_button_execute_validations=>'N'
+,p_confirm_message=>'&APP_TEXT$DELETE_MSG!RAW.'
+,p_confirm_style=>'danger'
+,p_button_condition=>'P33_EMPLOYMENT_TYPE_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9007000000000023)
+,p_button_sequence=>30
+,p_button_plug_id=>wwv_flow_imp.id(9007000000000020)
+,p_button_name=>'SAVE'
+,p_static_id=>'save'
+,p_button_action=>'SUBMIT'
+,p_button_template_id=>4073839297780169708
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Apply Changes'
+,p_button_position=>'CREATE'
+,p_button_condition=>'P33_EMPLOYMENT_TYPE_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9007000000000031)
+,p_name=>'P33_EMPLOYMENT_TYPE_CODE'
+,p_is_required=>true
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(9007000000000020)
+,p_prompt=>'Employment Type Code'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_cMaxlength=>30
+,p_field_template=>1610598484065263269
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9007000000000030)
+,p_name=>'P33_EMPLOYMENT_TYPE_ID'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(9007000000000020)
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_lov_display_extra=>'NO'
+,p_protection_level=>'S'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'value_protected', 'Y')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9007000000000032)
+,p_name=>'P33_EMPLOYMENT_TYPE_NAME'
+,p_is_required=>true
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(9007000000000020)
+,p_prompt=>'Employment Type Name'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>60
+,p_cMaxlength=>200
+,p_begin_on_new_line=>'N'
+,p_field_template=>1610598484065263269
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(9007000000000040)
+,p_process_sequence=>10
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Load Employment Type'
+,p_static_id=>'load-employment-type'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'if :P33_EMPLOYMENT_TYPE_ID is not null then',
+'    select employment_type_code, employment_type_name',
+'      into :P33_EMPLOYMENT_TYPE_CODE, :P33_EMPLOYMENT_TYPE_NAME',
+'      from admin.hrms_employment_types',
+'     where employment_type_id = :P33_EMPLOYMENT_TYPE_ID;',
+'end if;'))
+,p_process_clob_language=>'PLSQL'
+,p_internal_uid=>9007000000000040
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(9007000000000041)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Process Employment Type API'
+,p_static_id=>'process-employment-type-api'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'declare',
+'    l_error_code    number;',
+'    l_error_message varchar2(1000);',
+'    l_response      varchar2(200);',
+'begin',
+'    if :REQUEST = ''DELETE'' then',
+'        ADMIN.HRMS_PKG.deleteEmploymentType(:P33_EMPLOYMENT_TYPE_ID, :APP_USER, l_error_code, l_error_message, l_response);',
+'    elsif :P33_EMPLOYMENT_TYPE_ID is null then',
+'        ADMIN.HRMS_PKG.createEmploymentType(:P33_EMPLOYMENT_TYPE_CODE, :P33_EMPLOYMENT_TYPE_NAME, :APP_USER, l_error_code, l_error_message, l_response);',
+'    else',
+'        ADMIN.HRMS_PKG.updateEmploymentType(:P33_EMPLOYMENT_TYPE_ID, :P33_EMPLOYMENT_TYPE_CODE, :P33_EMPLOYMENT_TYPE_NAME, :APP_USER, l_error_code, l_error_message, l_response);',
+'    end if;',
+'    if l_error_code <> 200 then',
+'        raise_application_error(-20001, l_error_message);',
+'    end if;',
+'    if :REQUEST = ''DELETE'' then',
+'        :P33_EMPLOYMENT_TYPE_ID := null;',
+'    elsif :P33_EMPLOYMENT_TYPE_ID is null and l_response is not null then',
+'        :P33_EMPLOYMENT_TYPE_ID := to_number(l_response);',
+'    end if;',
+'end;'))
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'Employment type saved.'
+,p_internal_uid=>9007000000000041
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+end;
+/
+prompt --application/pages/page_00034
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>34
+,p_name=>'Department Profile'
+,p_alias=>'DEPARTMENT-PROFILE'
+,p_page_mode=>'MODAL'
+,p_step_title=>'Department Profile'
+,p_first_item=>'AUTO_FIRST_ITEM'
+,p_autocomplete_on_off=>'OFF'
+,p_step_template=>2101883943284197310
+,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_imp.id(6285130696332259)
+,p_dialog_chained=>'N'
+,p_dialog_resizable=>'Y'
+,p_protection_level=>'C'
+,p_help_text=>'<p>Create, update, or delete a department through HRMS_PKG.</p>'
+,p_page_component_map=>'16'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20260607121732Z')
+,p_created_by=>'NUMAN'
+,p_last_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9004100000000010)
+,p_plug_name=>'Buttons'
+,p_static_id=>'department-buttons'
+,p_region_template_options=>'#DEFAULT#'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>2127905476394690047
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'REGION_POSITION_03'
+,p_plug_item_display_point=>'ABOVE'
+,p_query_type=>'SQL'
+,p_plug_query_num_rows=>15
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(9004100000000011)
+,p_plug_name=>'Department Details'
+,p_static_id=>'department-profile-details'
+,p_region_template_options=>'#DEFAULT#:t-Form--stretchInputs'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>4502917002193490937
+,p_plug_display_sequence=>10
+,p_plug_item_display_point=>'ABOVE'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9004100000000012)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(9004100000000010)
+,p_button_name=>'CANCEL'
+,p_static_id=>'cancel-department'
+,p_show_as_disabled=>false
+,p_button_action=>'DEFINED_BY_DA_ACTION'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>4073839297780169708
+,p_button_image_alt=>'Cancel'
+,p_button_position=>'PREVIOUS'
+,p_button_execute_validations=>'N'
+,p_warn_on_unsaved_changes=>null
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_component_da_action(
+ p_id=>wwv_flow_imp.id(9004100000000013)
+,p_button_id=>wwv_flow_imp.id(9004100000000012)
+,p_action_sequence=>10
+,p_action=>'NATIVE_DIALOG_CANCEL'
+,p_static_id=>'cancel-department-dialog'
+,p_stop_execution_on_error=>true
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9004100000000016)
+,p_button_sequence=>40
+,p_button_plug_id=>wwv_flow_imp.id(9004100000000010)
+,p_button_name=>'CREATE'
+,p_static_id=>'create-department'
+,p_show_as_disabled=>false
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
+,p_button_template_id=>2084305881903810008
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Create Department'
+,p_button_position=>'NEXT'
+,p_button_condition=>'P34_DEPARTMENT_ID'
+,p_button_condition_type=>'ITEM_IS_NULL'
+,p_icon_css_classes=>'fa-plus'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9004100000000014)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(9004100000000010)
+,p_button_name=>'DELETE'
+,p_static_id=>'delete-department'
+,p_show_as_disabled=>false
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#:t-Button--danger:t-Button--simple:t-Button--iconLeft'
+,p_button_template_id=>2084305881903810008
+,p_button_image_alt=>'Delete'
+,p_button_position=>'PREVIOUS'
+,p_button_execute_validations=>'N'
+,p_confirm_message=>'&APP_TEXT$DELETE_MSG!RAW.'
+,p_confirm_style=>'danger'
+,p_button_condition=>'P34_DEPARTMENT_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_icon_css_classes=>'fa-trash-o'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(9004100000000015)
+,p_button_sequence=>30
+,p_button_plug_id=>wwv_flow_imp.id(9004100000000010)
+,p_button_name=>'SAVE'
+,p_static_id=>'save-department'
+,p_show_as_disabled=>false
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
+,p_button_template_id=>2084305881903810008
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Apply Changes'
+,p_button_position=>'NEXT'
+,p_button_condition=>'P34_DEPARTMENT_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_icon_css_classes=>'fa-save'
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9004100000000025)
+,p_name=>'P34_COST_CENTER'
+,p_item_sequence=>60
+,p_item_plug_id=>wwv_flow_imp.id(9004100000000011)
+,p_prompt=>'Cost Center'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_cMaxlength=>50
+,p_field_template=>1610598304472262251
+,p_item_template_options=>'#DEFAULT#'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607121732Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9004100000000021)
+,p_name=>'P34_DEPARTMENT_CODE'
+,p_is_required=>true
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(9004100000000011)
+,p_prompt=>'Department Code'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_cMaxlength=>30
+,p_field_template=>1610598484065263269
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9004100000000020)
+,p_name=>'P34_DEPARTMENT_ID'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(9004100000000011)
+,p_prompt=>'Department ID'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_field_template=>2042262243893469891
+,p_lov_display_extra=>'NO'
+,p_protection_level=>'S'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'based_on', 'VALUE',
+  'format', 'PLAIN',
+  'send_on_page_submit', 'Y')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9004100000000022)
+,p_name=>'P34_DEPARTMENT_NAME'
+,p_is_required=>true
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(9004100000000011)
+,p_prompt=>'Department Name'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>60
+,p_cMaxlength=>200
+,p_begin_on_new_line=>'N'
+,p_field_template=>1610598484065263269
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9004100000000024)
+,p_name=>'P34_LOCATION_ID'
+,p_item_sequence=>50
+,p_item_plug_id=>wwv_flow_imp.id(9004100000000011)
+,p_prompt=>'Location'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select location_name d, location_id r',
+'  from admin.hrms_locations',
+' where is_active = ''Y''',
+' order by location_name'))
+,p_lov_display_null=>'YES'
+,p_begin_on_new_line=>'N'
+,p_field_template=>1610598304472262251
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607121732Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(9004100000000023)
+,p_name=>'P34_PARENT_DEPARTMENT_ID'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(9004100000000011)
+,p_prompt=>'Parent Department'
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select department_name d, department_id r',
+'  from admin.hrms_departments',
+' where is_active = ''Y''',
+'   and (:P34_DEPARTMENT_ID is null or department_id <> :P34_DEPARTMENT_ID)',
+' order by department_name'))
+,p_lov_display_null=>'YES'
+,p_field_template=>1610598304472262251
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607121732Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(9004100000000032)
+,p_process_sequence=>40
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_CLOSE_WINDOW'
+,p_process_name=>'Close Dialog'
+,p_static_id=>'close-dialog'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_internal_uid=>9004100000000032
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(9004100000000030)
+,p_process_sequence=>10
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Load Department'
+,p_static_id=>'load-department'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'if :P34_DEPARTMENT_ID is not null then',
+'    select department_code, department_name, parent_department_id, location_id, cost_center',
+'      into :P34_DEPARTMENT_CODE, :P34_DEPARTMENT_NAME, :P34_PARENT_DEPARTMENT_ID, :P34_LOCATION_ID, :P34_COST_CENTER',
+'      from admin.hrms_departments',
+'     where department_id = :P34_DEPARTMENT_ID;',
+'end if;'))
+,p_process_clob_language=>'PLSQL'
+,p_internal_uid=>9004100000000030
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_created_by=>'NUMAN'
+,p_updated_by=>'NUMAN'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(9004100000000031)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Process Department API'
+,p_static_id=>'process-department-api'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'declare',
+'    l_error_code    number;',
+'    l_error_message varchar2(1000);',
+'    l_response      varchar2(200);',
+'begin',
+'    if :REQUEST = ''DELETE'' then',
+'        ADMIN.HRMS_PKG.deleteDepartment(:P34_DEPARTMENT_ID, :APP_USER, l_error_code, l_error_message, l_response);',
+'    elsif :P34_DEPARTMENT_ID is null then',
+'        ADMIN.HRMS_PKG.createDepartment(:P34_DEPARTMENT_CODE, :P34_DEPARTMENT_NAME, :P34_PARENT_DEPARTMENT_ID, :P34_LOCATION_ID, :P34_COST_CENTER, :APP_USER, l_error_code, l_error_message, l_response);',
+'    else',
+'        ADMIN.HRMS_PKG.updateDepartment(:P34_DEPARTMENT_ID, :P34_DEPARTMENT_CODE, :P34_DEPARTMENT_NAME, :P34_PARENT_DEPARTMENT_ID, :P34_LOCATION_ID, :P34_COST_CENTER, :APP_USER, l_error_code, l_error_message, l_response);',
+'    end if;',
+'',
+'    if l_error_code <> 200 then',
+'        raise_application_error(-20001, l_error_message);',
+'    end if;',
+'',
+'    if :P34_DEPARTMENT_ID is null and l_response is not null then',
+'        :P34_DEPARTMENT_ID := to_number(l_response);',
+'    end if;',
+'end;'))
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'Department saved.'
+,p_internal_uid=>9004100000000031
+,p_created_on=>wwv_flow_imp.dz('20260607100000Z')
+,p_updated_on=>wwv_flow_imp.dz('20260607100000Z')
 ,p_created_by=>'NUMAN'
 ,p_updated_by=>'NUMAN'
 );

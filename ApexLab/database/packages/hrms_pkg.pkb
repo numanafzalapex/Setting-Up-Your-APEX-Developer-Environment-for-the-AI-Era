@@ -143,6 +143,96 @@ CREATE OR REPLACE PACKAGE BODY ADMIN.HRMS_PKG AS
             setError(errorCode, errorMessage, response, 'Error: an unhandaled exception from createDepartment API. ' || SUBSTR(SQLERRM, 1, 450));
     END createDepartment;
 
+    PROCEDURE updateDepartment(
+        departmentId        IN  ADMIN.HRMS_DEPARTMENTS.DEPARTMENT_ID%TYPE,
+        departmentCode      IN  ADMIN.HRMS_DEPARTMENTS.DEPARTMENT_CODE%TYPE,
+        departmentName      IN  ADMIN.HRMS_DEPARTMENTS.DEPARTMENT_NAME%TYPE,
+        parentDepartmentId  IN  ADMIN.HRMS_DEPARTMENTS.PARENT_DEPARTMENT_ID%TYPE,
+        locationId          IN  ADMIN.HRMS_DEPARTMENTS.LOCATION_ID%TYPE,
+        costCenter          IN  ADMIN.HRMS_DEPARTMENTS.COST_CENTER%TYPE,
+        userName            IN  ADMIN.HRMS_DEPARTMENTS.UPDATED_BY%TYPE,
+        errorCode           OUT NUMBER,
+        errorMessage        OUT VARCHAR2,
+        response            OUT VARCHAR2
+    ) AS
+        l_count PLS_INTEGER;
+    BEGIN
+        errorCode := c_success_code;
+        errorMessage := c_success;
+        response := NULL;
+
+        SELECT COUNT(*) INTO l_count FROM ADMIN.HRMS_DEPARTMENTS WHERE DEPARTMENT_ID = departmentId;
+
+        IF departmentId IS NULL OR l_count = 0 THEN
+            setError(errorCode, errorMessage, response, 'Error: departmentId does not exist in updateDepartment API.');
+        ELSIF departmentCode IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: departmentCode not found in updateDepartment API.');
+        ELSIF departmentName IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: departmentName not found in updateDepartment API.');
+        ELSIF parentDepartmentId = departmentId THEN
+            setError(errorCode, errorMessage, response, 'Error: parentDepartmentId cannot be the same department.');
+        ELSIF parentDepartmentId IS NOT NULL AND NOT existsDepartment(parentDepartmentId) THEN
+            setError(errorCode, errorMessage, response, 'Error: parentDepartmentId does not exist.');
+        ELSIF locationId IS NOT NULL AND NOT existsLocation(locationId) THEN
+            setError(errorCode, errorMessage, response, 'Error: locationId does not exist.');
+        ELSIF userName IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: userName not found in updateDepartment API.');
+        END IF;
+
+        IF errorCode = c_success_code THEN
+            UPDATE ADMIN.HRMS_DEPARTMENTS d
+               SET d.DEPARTMENT_CODE = UPPER(TRIM(departmentCode)),
+                   d.DEPARTMENT_NAME = TRIM(departmentName),
+                   d.PARENT_DEPARTMENT_ID = parentDepartmentId,
+                   d.LOCATION_ID = locationId,
+                   d.COST_CENTER = UPPER(TRIM(costCenter)),
+                   d.UPDATED_BY = userName,
+                   d.UPDATED_ON = SYSDATE
+             WHERE d.DEPARTMENT_ID = departmentId;
+            COMMIT;
+        END IF;
+    EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            ROLLBACK;
+            setError(errorCode, errorMessage, response, 'Error: departmentCode already exists.');
+        WHEN OTHERS THEN
+            ROLLBACK;
+            setError(errorCode, errorMessage, response, 'Error: an unhandaled exception from updateDepartment API. ' || SUBSTR(SQLERRM, 1, 450));
+    END updateDepartment;
+
+    PROCEDURE deleteDepartment(
+        departmentId  IN  ADMIN.HRMS_DEPARTMENTS.DEPARTMENT_ID%TYPE,
+        userName      IN  ADMIN.HRMS_DEPARTMENTS.UPDATED_BY%TYPE,
+        errorCode     OUT NUMBER,
+        errorMessage  OUT VARCHAR2,
+        response      OUT VARCHAR2
+    ) AS
+    BEGIN
+        errorCode := c_success_code;
+        errorMessage := c_success;
+        response := NULL;
+
+        IF departmentId IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: departmentId not found in deleteDepartment API.');
+        ELSIF userName IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: userName not found in deleteDepartment API.');
+        END IF;
+
+        IF errorCode = c_success_code THEN
+            DELETE FROM ADMIN.HRMS_DEPARTMENTS WHERE DEPARTMENT_ID = departmentId;
+            IF SQL%ROWCOUNT = 0 THEN
+                ROLLBACK;
+                setError(errorCode, errorMessage, response, 'Error: departmentId does not exist in deleteDepartment API.');
+            ELSE
+                COMMIT;
+            END IF;
+        END IF;
+    EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+            setError(errorCode, errorMessage, response, 'Error: an unhandaled exception from deleteDepartment API. ' || SUBSTR(SQLERRM, 1, 450));
+    END deleteDepartment;
+
     PROCEDURE createDesignation(
         designationCode  IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_CODE%TYPE,
         designationName  IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_NAME%TYPE,
@@ -180,6 +270,84 @@ CREATE OR REPLACE PACKAGE BODY ADMIN.HRMS_PKG AS
             ROLLBACK;
             setError(errorCode, errorMessage, response, 'Error: an unhandaled exception from createDesignation API. ' || SUBSTR(SQLERRM, 1, 450));
     END createDesignation;
+
+    PROCEDURE updateDesignation(
+        designationId    IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_ID%TYPE,
+        designationCode  IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_CODE%TYPE,
+        designationName  IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_NAME%TYPE,
+        userName         IN  ADMIN.HRMS_DESIGNATIONS.UPDATED_BY%TYPE,
+        errorCode        OUT NUMBER,
+        errorMessage     OUT VARCHAR2,
+        response         OUT VARCHAR2
+    ) AS
+        l_count PLS_INTEGER;
+    BEGIN
+        errorCode := c_success_code;
+        errorMessage := c_success;
+        response := NULL;
+
+        SELECT COUNT(*) INTO l_count FROM ADMIN.HRMS_DESIGNATIONS WHERE DESIGNATION_ID = designationId;
+
+        IF designationId IS NULL OR l_count = 0 THEN
+            setError(errorCode, errorMessage, response, 'Error: designationId does not exist in updateDesignation API.');
+        ELSIF designationCode IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: designationCode not found in updateDesignation API.');
+        ELSIF designationName IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: designationName not found in updateDesignation API.');
+        ELSIF userName IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: userName not found in updateDesignation API.');
+        END IF;
+
+        IF errorCode = c_success_code THEN
+            UPDATE ADMIN.HRMS_DESIGNATIONS d
+               SET d.DESIGNATION_CODE = UPPER(TRIM(designationCode)),
+                   d.DESIGNATION_NAME = TRIM(designationName),
+                   d.UPDATED_BY = userName,
+                   d.UPDATED_ON = SYSDATE
+             WHERE d.DESIGNATION_ID = designationId;
+            COMMIT;
+        END IF;
+    EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            ROLLBACK;
+            setError(errorCode, errorMessage, response, 'Error: designationCode already exists.');
+        WHEN OTHERS THEN
+            ROLLBACK;
+            setError(errorCode, errorMessage, response, 'Error: an unhandaled exception from updateDesignation API. ' || SUBSTR(SQLERRM, 1, 450));
+    END updateDesignation;
+
+    PROCEDURE deleteDesignation(
+        designationId  IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_ID%TYPE,
+        userName       IN  ADMIN.HRMS_DESIGNATIONS.UPDATED_BY%TYPE,
+        errorCode      OUT NUMBER,
+        errorMessage   OUT VARCHAR2,
+        response       OUT VARCHAR2
+    ) AS
+    BEGIN
+        errorCode := c_success_code;
+        errorMessage := c_success;
+        response := NULL;
+
+        IF designationId IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: designationId not found in deleteDesignation API.');
+        ELSIF userName IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: userName not found in deleteDesignation API.');
+        END IF;
+
+        IF errorCode = c_success_code THEN
+            DELETE FROM ADMIN.HRMS_DESIGNATIONS WHERE DESIGNATION_ID = designationId;
+            IF SQL%ROWCOUNT = 0 THEN
+                ROLLBACK;
+                setError(errorCode, errorMessage, response, 'Error: designationId does not exist in deleteDesignation API.');
+            ELSE
+                COMMIT;
+            END IF;
+        END IF;
+    EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+            setError(errorCode, errorMessage, response, 'Error: an unhandaled exception from deleteDesignation API. ' || SUBSTR(SQLERRM, 1, 450));
+    END deleteDesignation;
 
     PROCEDURE createGrade(
         gradeCode     IN  ADMIN.HRMS_GRADES.GRADE_CODE%TYPE,
@@ -223,6 +391,90 @@ CREATE OR REPLACE PACKAGE BODY ADMIN.HRMS_PKG AS
             setError(errorCode, errorMessage, response, 'Error: an unhandaled exception from createGrade API. ' || SUBSTR(SQLERRM, 1, 450));
     END createGrade;
 
+    PROCEDURE updateGrade(
+        gradeId       IN  ADMIN.HRMS_GRADES.GRADE_ID%TYPE,
+        gradeCode     IN  ADMIN.HRMS_GRADES.GRADE_CODE%TYPE,
+        gradeName     IN  ADMIN.HRMS_GRADES.GRADE_NAME%TYPE,
+        minSalary     IN  ADMIN.HRMS_GRADES.MIN_SALARY%TYPE,
+        maxSalary     IN  ADMIN.HRMS_GRADES.MAX_SALARY%TYPE,
+        userName      IN  ADMIN.HRMS_GRADES.UPDATED_BY%TYPE,
+        errorCode     OUT NUMBER,
+        errorMessage  OUT VARCHAR2,
+        response      OUT VARCHAR2
+    ) AS
+        l_count PLS_INTEGER;
+    BEGIN
+        errorCode := c_success_code;
+        errorMessage := c_success;
+        response := NULL;
+
+        SELECT COUNT(*) INTO l_count FROM ADMIN.HRMS_GRADES WHERE GRADE_ID = gradeId;
+
+        IF gradeId IS NULL OR l_count = 0 THEN
+            setError(errorCode, errorMessage, response, 'Error: gradeId does not exist in updateGrade API.');
+        ELSIF gradeCode IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: gradeCode not found in updateGrade API.');
+        ELSIF gradeName IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: gradeName not found in updateGrade API.');
+        ELSIF maxSalary IS NOT NULL AND minSalary IS NOT NULL AND maxSalary < minSalary THEN
+            setError(errorCode, errorMessage, response, 'Error: maxSalary cannot be less than minSalary.');
+        ELSIF userName IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: userName not found in updateGrade API.');
+        END IF;
+
+        IF errorCode = c_success_code THEN
+            UPDATE ADMIN.HRMS_GRADES g
+               SET g.GRADE_CODE = UPPER(TRIM(gradeCode)),
+                   g.GRADE_NAME = TRIM(gradeName),
+                   g.MIN_SALARY = minSalary,
+                   g.MAX_SALARY = maxSalary,
+                   g.UPDATED_BY = userName,
+                   g.UPDATED_ON = SYSDATE
+             WHERE g.GRADE_ID = gradeId;
+            COMMIT;
+        END IF;
+    EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            ROLLBACK;
+            setError(errorCode, errorMessage, response, 'Error: gradeCode already exists.');
+        WHEN OTHERS THEN
+            ROLLBACK;
+            setError(errorCode, errorMessage, response, 'Error: an unhandaled exception from updateGrade API. ' || SUBSTR(SQLERRM, 1, 450));
+    END updateGrade;
+
+    PROCEDURE deleteGrade(
+        gradeId       IN  ADMIN.HRMS_GRADES.GRADE_ID%TYPE,
+        userName      IN  ADMIN.HRMS_GRADES.UPDATED_BY%TYPE,
+        errorCode     OUT NUMBER,
+        errorMessage  OUT VARCHAR2,
+        response      OUT VARCHAR2
+    ) AS
+    BEGIN
+        errorCode := c_success_code;
+        errorMessage := c_success;
+        response := NULL;
+
+        IF gradeId IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: gradeId not found in deleteGrade API.');
+        ELSIF userName IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: userName not found in deleteGrade API.');
+        END IF;
+
+        IF errorCode = c_success_code THEN
+            DELETE FROM ADMIN.HRMS_GRADES WHERE GRADE_ID = gradeId;
+            IF SQL%ROWCOUNT = 0 THEN
+                ROLLBACK;
+                setError(errorCode, errorMessage, response, 'Error: gradeId does not exist in deleteGrade API.');
+            ELSE
+                COMMIT;
+            END IF;
+        END IF;
+    EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+            setError(errorCode, errorMessage, response, 'Error: an unhandaled exception from deleteGrade API. ' || SUBSTR(SQLERRM, 1, 450));
+    END deleteGrade;
+
     PROCEDURE createEmploymentType(
         employmentTypeCode  IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_CODE%TYPE,
         employmentTypeName  IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_NAME%TYPE,
@@ -260,6 +512,84 @@ CREATE OR REPLACE PACKAGE BODY ADMIN.HRMS_PKG AS
             ROLLBACK;
             setError(errorCode, errorMessage, response, 'Error: an unhandaled exception from createEmploymentType API. ' || SUBSTR(SQLERRM, 1, 450));
     END createEmploymentType;
+
+    PROCEDURE updateEmploymentType(
+        employmentTypeId    IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_ID%TYPE,
+        employmentTypeCode  IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_CODE%TYPE,
+        employmentTypeName  IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_NAME%TYPE,
+        userName            IN  ADMIN.HRMS_EMPLOYMENT_TYPES.UPDATED_BY%TYPE,
+        errorCode           OUT NUMBER,
+        errorMessage        OUT VARCHAR2,
+        response            OUT VARCHAR2
+    ) AS
+        l_count PLS_INTEGER;
+    BEGIN
+        errorCode := c_success_code;
+        errorMessage := c_success;
+        response := NULL;
+
+        SELECT COUNT(*) INTO l_count FROM ADMIN.HRMS_EMPLOYMENT_TYPES WHERE EMPLOYMENT_TYPE_ID = employmentTypeId;
+
+        IF employmentTypeId IS NULL OR l_count = 0 THEN
+            setError(errorCode, errorMessage, response, 'Error: employmentTypeId does not exist in updateEmploymentType API.');
+        ELSIF employmentTypeCode IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: employmentTypeCode not found in updateEmploymentType API.');
+        ELSIF employmentTypeName IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: employmentTypeName not found in updateEmploymentType API.');
+        ELSIF userName IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: userName not found in updateEmploymentType API.');
+        END IF;
+
+        IF errorCode = c_success_code THEN
+            UPDATE ADMIN.HRMS_EMPLOYMENT_TYPES e
+               SET e.EMPLOYMENT_TYPE_CODE = UPPER(TRIM(employmentTypeCode)),
+                   e.EMPLOYMENT_TYPE_NAME = TRIM(employmentTypeName),
+                   e.UPDATED_BY = userName,
+                   e.UPDATED_ON = SYSDATE
+             WHERE e.EMPLOYMENT_TYPE_ID = employmentTypeId;
+            COMMIT;
+        END IF;
+    EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            ROLLBACK;
+            setError(errorCode, errorMessage, response, 'Error: employmentTypeCode already exists.');
+        WHEN OTHERS THEN
+            ROLLBACK;
+            setError(errorCode, errorMessage, response, 'Error: an unhandaled exception from updateEmploymentType API. ' || SUBSTR(SQLERRM, 1, 450));
+    END updateEmploymentType;
+
+    PROCEDURE deleteEmploymentType(
+        employmentTypeId  IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_ID%TYPE,
+        userName          IN  ADMIN.HRMS_EMPLOYMENT_TYPES.UPDATED_BY%TYPE,
+        errorCode         OUT NUMBER,
+        errorMessage      OUT VARCHAR2,
+        response          OUT VARCHAR2
+    ) AS
+    BEGIN
+        errorCode := c_success_code;
+        errorMessage := c_success;
+        response := NULL;
+
+        IF employmentTypeId IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: employmentTypeId not found in deleteEmploymentType API.');
+        ELSIF userName IS NULL THEN
+            setError(errorCode, errorMessage, response, 'Error: userName not found in deleteEmploymentType API.');
+        END IF;
+
+        IF errorCode = c_success_code THEN
+            DELETE FROM ADMIN.HRMS_EMPLOYMENT_TYPES WHERE EMPLOYMENT_TYPE_ID = employmentTypeId;
+            IF SQL%ROWCOUNT = 0 THEN
+                ROLLBACK;
+                setError(errorCode, errorMessage, response, 'Error: employmentTypeId does not exist in deleteEmploymentType API.');
+            ELSE
+                COMMIT;
+            END IF;
+        END IF;
+    EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+            setError(errorCode, errorMessage, response, 'Error: an unhandaled exception from deleteEmploymentType API. ' || SUBSTR(SQLERRM, 1, 450));
+    END deleteEmploymentType;
 
     PROCEDURE validateEmployee(
         employeeCode      IN  ADMIN.HRMS_EMPLOYEES.EMPLOYEE_CODE%TYPE,

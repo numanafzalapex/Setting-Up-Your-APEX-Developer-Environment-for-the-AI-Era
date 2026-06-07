@@ -30,6 +30,27 @@ CREATE OR REPLACE PACKAGE ADMIN.HRMS_PKG AS
         response            OUT VARCHAR2
     );
 
+    PROCEDURE updateDepartment(
+        departmentId        IN  ADMIN.HRMS_DEPARTMENTS.DEPARTMENT_ID%TYPE,
+        departmentCode      IN  ADMIN.HRMS_DEPARTMENTS.DEPARTMENT_CODE%TYPE,
+        departmentName      IN  ADMIN.HRMS_DEPARTMENTS.DEPARTMENT_NAME%TYPE,
+        parentDepartmentId  IN  ADMIN.HRMS_DEPARTMENTS.PARENT_DEPARTMENT_ID%TYPE,
+        locationId          IN  ADMIN.HRMS_DEPARTMENTS.LOCATION_ID%TYPE,
+        costCenter          IN  ADMIN.HRMS_DEPARTMENTS.COST_CENTER%TYPE,
+        userName            IN  ADMIN.HRMS_DEPARTMENTS.UPDATED_BY%TYPE,
+        errorCode           OUT NUMBER,
+        errorMessage        OUT VARCHAR2,
+        response            OUT VARCHAR2
+    );
+
+    PROCEDURE deleteDepartment(
+        departmentId  IN  ADMIN.HRMS_DEPARTMENTS.DEPARTMENT_ID%TYPE,
+        userName      IN  ADMIN.HRMS_DEPARTMENTS.UPDATED_BY%TYPE,
+        errorCode     OUT NUMBER,
+        errorMessage  OUT VARCHAR2,
+        response      OUT VARCHAR2
+    );
+
     PROCEDURE createDesignation(
         designationCode  IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_CODE%TYPE,
         designationName  IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_NAME%TYPE,
@@ -37,6 +58,24 @@ CREATE OR REPLACE PACKAGE ADMIN.HRMS_PKG AS
         errorCode        OUT NUMBER,
         errorMessage     OUT VARCHAR2,
         response         OUT VARCHAR2
+    );
+
+    PROCEDURE updateDesignation(
+        designationId    IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_ID%TYPE,
+        designationCode  IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_CODE%TYPE,
+        designationName  IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_NAME%TYPE,
+        userName         IN  ADMIN.HRMS_DESIGNATIONS.UPDATED_BY%TYPE,
+        errorCode        OUT NUMBER,
+        errorMessage     OUT VARCHAR2,
+        response         OUT VARCHAR2
+    );
+
+    PROCEDURE deleteDesignation(
+        designationId  IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_ID%TYPE,
+        userName       IN  ADMIN.HRMS_DESIGNATIONS.UPDATED_BY%TYPE,
+        errorCode      OUT NUMBER,
+        errorMessage   OUT VARCHAR2,
+        response       OUT VARCHAR2
     );
 
     PROCEDURE createGrade(
@@ -50,6 +89,26 @@ CREATE OR REPLACE PACKAGE ADMIN.HRMS_PKG AS
         response      OUT VARCHAR2
     );
 
+    PROCEDURE updateGrade(
+        gradeId       IN  ADMIN.HRMS_GRADES.GRADE_ID%TYPE,
+        gradeCode     IN  ADMIN.HRMS_GRADES.GRADE_CODE%TYPE,
+        gradeName     IN  ADMIN.HRMS_GRADES.GRADE_NAME%TYPE,
+        minSalary     IN  ADMIN.HRMS_GRADES.MIN_SALARY%TYPE,
+        maxSalary     IN  ADMIN.HRMS_GRADES.MAX_SALARY%TYPE,
+        userName      IN  ADMIN.HRMS_GRADES.UPDATED_BY%TYPE,
+        errorCode     OUT NUMBER,
+        errorMessage  OUT VARCHAR2,
+        response      OUT VARCHAR2
+    );
+
+    PROCEDURE deleteGrade(
+        gradeId       IN  ADMIN.HRMS_GRADES.GRADE_ID%TYPE,
+        userName      IN  ADMIN.HRMS_GRADES.UPDATED_BY%TYPE,
+        errorCode     OUT NUMBER,
+        errorMessage  OUT VARCHAR2,
+        response      OUT VARCHAR2
+    );
+
     PROCEDURE createEmploymentType(
         employmentTypeCode  IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_CODE%TYPE,
         employmentTypeName  IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_NAME%TYPE,
@@ -57,6 +116,24 @@ CREATE OR REPLACE PACKAGE ADMIN.HRMS_PKG AS
         errorCode           OUT NUMBER,
         errorMessage        OUT VARCHAR2,
         response            OUT VARCHAR2
+    );
+
+    PROCEDURE updateEmploymentType(
+        employmentTypeId    IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_ID%TYPE,
+        employmentTypeCode  IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_CODE%TYPE,
+        employmentTypeName  IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_NAME%TYPE,
+        userName            IN  ADMIN.HRMS_EMPLOYMENT_TYPES.UPDATED_BY%TYPE,
+        errorCode           OUT NUMBER,
+        errorMessage        OUT VARCHAR2,
+        response            OUT VARCHAR2
+    );
+
+    PROCEDURE deleteEmploymentType(
+        employmentTypeId  IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_ID%TYPE,
+        userName          IN  ADMIN.HRMS_EMPLOYMENT_TYPES.UPDATED_BY%TYPE,
+        errorCode         OUT NUMBER,
+        errorMessage      OUT VARCHAR2,
+        response          OUT VARCHAR2
     );
 
     PROCEDURE createEmployee(
