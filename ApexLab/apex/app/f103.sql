@@ -39,6 +39,7 @@ prompt APPLICATION 103 - HRMS
 --   Export Type:     Application Export
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --     Pages:                     30
 --       Items:                   53
 --       Validations:              2
@@ -64,6 +65,15 @@ prompt APPLICATION 103 - HRMS
 --       Buttons:                 53
 --       Dynamic Actions:          11
 >>>>>>> parent of 4484697 (Added Lookups)
+=======
+--     Pages:                     28
+--       Items:                   46
+--       Validations:              2
+--       Processes:               24
+--       Regions:                 66
+--       Buttons:                 42
+--       Dynamic Actions:          9
+>>>>>>> parent of 68b792e (Add Lookups)
 --     Shared Components:
 --       Logic:
 --         App Settings:           2
@@ -2724,6 +2734,7 @@ wwv_flow_imp_page.create_page_process(
 end;
 /
 <<<<<<< HEAD
+<<<<<<< HEAD
 prompt --application/pages/page_00020
 begin
 wwv_flow_imp_page.create_page(
@@ -4274,6 +4285,8 @@ wwv_flow_imp_page.create_page_process(
 );
 end;
 /
+=======
+>>>>>>> parent of 68b792e (Add Lookups)
 =======
 >>>>>>> parent of 68b792e (Add Lookups)
 prompt --application/pages/page_09999
