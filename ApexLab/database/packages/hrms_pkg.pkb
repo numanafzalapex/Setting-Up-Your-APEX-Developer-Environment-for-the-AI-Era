@@ -1,4 +1,4 @@
-CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
+CREATE OR REPLACE PACKAGE BODY ADMIN.HRMS_PKG AS
     c_success_code CONSTANT NUMBER(3) := 200;
     c_error_code   CONSTANT NUMBER(3) := 400;
     c_success      CONSTANT VARCHAR2(20) := 'success';
@@ -19,56 +19,56 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     FUNCTION existsLocation(locationId IN NUMBER) RETURN BOOLEAN AS
         l_count PLS_INTEGER;
     BEGIN
-        SELECT COUNT(*) INTO l_count FROM HRMS_LOCATIONS WHERE LOCATION_ID = locationId AND IS_ACTIVE = 'Y';
+        SELECT COUNT(*) INTO l_count FROM ADMIN.HRMS_LOCATIONS WHERE LOCATION_ID = locationId AND IS_ACTIVE = 'Y';
         RETURN l_count > 0;
     END existsLocation;
 
     FUNCTION existsDepartment(departmentId IN NUMBER) RETURN BOOLEAN AS
         l_count PLS_INTEGER;
     BEGIN
-        SELECT COUNT(*) INTO l_count FROM HRMS_DEPARTMENTS WHERE DEPARTMENT_ID = departmentId AND IS_ACTIVE = 'Y';
+        SELECT COUNT(*) INTO l_count FROM ADMIN.HRMS_DEPARTMENTS WHERE DEPARTMENT_ID = departmentId AND IS_ACTIVE = 'Y';
         RETURN l_count > 0;
     END existsDepartment;
 
     FUNCTION existsDesignation(designationId IN NUMBER) RETURN BOOLEAN AS
         l_count PLS_INTEGER;
     BEGIN
-        SELECT COUNT(*) INTO l_count FROM HRMS_DESIGNATIONS WHERE DESIGNATION_ID = designationId AND IS_ACTIVE = 'Y';
+        SELECT COUNT(*) INTO l_count FROM ADMIN.HRMS_DESIGNATIONS WHERE DESIGNATION_ID = designationId AND IS_ACTIVE = 'Y';
         RETURN l_count > 0;
     END existsDesignation;
 
     FUNCTION existsGrade(gradeId IN NUMBER) RETURN BOOLEAN AS
         l_count PLS_INTEGER;
     BEGIN
-        SELECT COUNT(*) INTO l_count FROM HRMS_GRADES WHERE GRADE_ID = gradeId AND IS_ACTIVE = 'Y';
+        SELECT COUNT(*) INTO l_count FROM ADMIN.HRMS_GRADES WHERE GRADE_ID = gradeId AND IS_ACTIVE = 'Y';
         RETURN l_count > 0;
     END existsGrade;
 
     FUNCTION existsEmploymentType(employmentTypeId IN NUMBER) RETURN BOOLEAN AS
         l_count PLS_INTEGER;
     BEGIN
-        SELECT COUNT(*) INTO l_count FROM HRMS_EMPLOYMENT_TYPES WHERE EMPLOYMENT_TYPE_ID = employmentTypeId AND IS_ACTIVE = 'Y';
+        SELECT COUNT(*) INTO l_count FROM ADMIN.HRMS_EMPLOYMENT_TYPES WHERE EMPLOYMENT_TYPE_ID = employmentTypeId AND IS_ACTIVE = 'Y';
         RETURN l_count > 0;
     END existsEmploymentType;
 
     FUNCTION existsEmployee(employeeId IN NUMBER) RETURN BOOLEAN AS
         l_count PLS_INTEGER;
     BEGIN
-        SELECT COUNT(*) INTO l_count FROM HRMS_EMPLOYEES WHERE EMPLOYEE_ID = employeeId;
+        SELECT COUNT(*) INTO l_count FROM ADMIN.HRMS_EMPLOYEES WHERE EMPLOYEE_ID = employeeId;
         RETURN l_count > 0;
     END existsEmployee;
 
     PROCEDURE createLocation(
-        locationCode  IN  HRMS_LOCATIONS.LOCATION_CODE%TYPE,
-        locationName  IN  HRMS_LOCATIONS.LOCATION_NAME%TYPE,
-        city          IN  HRMS_LOCATIONS.CITY%TYPE,
-        country       IN  HRMS_LOCATIONS.COUNTRY%TYPE,
-        userName      IN  HRMS_LOCATIONS.CREATED_BY%TYPE,
+        locationCode  IN  ADMIN.HRMS_LOCATIONS.LOCATION_CODE%TYPE,
+        locationName  IN  ADMIN.HRMS_LOCATIONS.LOCATION_NAME%TYPE,
+        city          IN  ADMIN.HRMS_LOCATIONS.CITY%TYPE,
+        country       IN  ADMIN.HRMS_LOCATIONS.COUNTRY%TYPE,
+        userName      IN  ADMIN.HRMS_LOCATIONS.CREATED_BY%TYPE,
         errorCode     OUT NUMBER,
         errorMessage  OUT VARCHAR2,
         response      OUT VARCHAR2
     ) AS
-        l_id HRMS_LOCATIONS.LOCATION_ID%TYPE;
+        l_id ADMIN.HRMS_LOCATIONS.LOCATION_ID%TYPE;
     BEGIN
         errorCode := c_success_code;
         errorMessage := c_success;
@@ -83,7 +83,7 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
         END IF;
 
         IF errorCode = c_success_code THEN
-            INSERT INTO HRMS_LOCATIONS (LOCATION_CODE, LOCATION_NAME, CITY, COUNTRY, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
+            INSERT INTO ADMIN.HRMS_LOCATIONS (LOCATION_CODE, LOCATION_NAME, CITY, COUNTRY, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
             VALUES (UPPER(TRIM(locationCode)), TRIM(locationName), TRIM(city), TRIM(country), userName, SYSDATE, userName, SYSDATE)
             RETURNING LOCATION_ID INTO l_id;
             COMMIT;
@@ -99,17 +99,17 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     END createLocation;
 
     PROCEDURE createDepartment(
-        departmentCode      IN  HRMS_DEPARTMENTS.DEPARTMENT_CODE%TYPE,
-        departmentName      IN  HRMS_DEPARTMENTS.DEPARTMENT_NAME%TYPE,
-        parentDepartmentId  IN  HRMS_DEPARTMENTS.PARENT_DEPARTMENT_ID%TYPE,
-        locationId          IN  HRMS_DEPARTMENTS.LOCATION_ID%TYPE,
-        costCenter          IN  HRMS_DEPARTMENTS.COST_CENTER%TYPE,
-        userName            IN  HRMS_DEPARTMENTS.CREATED_BY%TYPE,
+        departmentCode      IN  ADMIN.HRMS_DEPARTMENTS.DEPARTMENT_CODE%TYPE,
+        departmentName      IN  ADMIN.HRMS_DEPARTMENTS.DEPARTMENT_NAME%TYPE,
+        parentDepartmentId  IN  ADMIN.HRMS_DEPARTMENTS.PARENT_DEPARTMENT_ID%TYPE,
+        locationId          IN  ADMIN.HRMS_DEPARTMENTS.LOCATION_ID%TYPE,
+        costCenter          IN  ADMIN.HRMS_DEPARTMENTS.COST_CENTER%TYPE,
+        userName            IN  ADMIN.HRMS_DEPARTMENTS.CREATED_BY%TYPE,
         errorCode           OUT NUMBER,
         errorMessage        OUT VARCHAR2,
         response            OUT VARCHAR2
     ) AS
-        l_id HRMS_DEPARTMENTS.DEPARTMENT_ID%TYPE;
+        l_id ADMIN.HRMS_DEPARTMENTS.DEPARTMENT_ID%TYPE;
     BEGIN
         errorCode := c_success_code;
         errorMessage := c_success;
@@ -128,7 +128,7 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
         END IF;
 
         IF errorCode = c_success_code THEN
-            INSERT INTO HRMS_DEPARTMENTS (DEPARTMENT_CODE, DEPARTMENT_NAME, PARENT_DEPARTMENT_ID, LOCATION_ID, COST_CENTER, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
+            INSERT INTO ADMIN.HRMS_DEPARTMENTS (DEPARTMENT_CODE, DEPARTMENT_NAME, PARENT_DEPARTMENT_ID, LOCATION_ID, COST_CENTER, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
             VALUES (UPPER(TRIM(departmentCode)), TRIM(departmentName), parentDepartmentId, locationId, UPPER(TRIM(costCenter)), userName, SYSDATE, userName, SYSDATE)
             RETURNING DEPARTMENT_ID INTO l_id;
             COMMIT;
@@ -144,14 +144,14 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     END createDepartment;
 
     PROCEDURE createDesignation(
-        designationCode  IN  HRMS_DESIGNATIONS.DESIGNATION_CODE%TYPE,
-        designationName  IN  HRMS_DESIGNATIONS.DESIGNATION_NAME%TYPE,
-        userName         IN  HRMS_DESIGNATIONS.CREATED_BY%TYPE,
+        designationCode  IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_CODE%TYPE,
+        designationName  IN  ADMIN.HRMS_DESIGNATIONS.DESIGNATION_NAME%TYPE,
+        userName         IN  ADMIN.HRMS_DESIGNATIONS.CREATED_BY%TYPE,
         errorCode        OUT NUMBER,
         errorMessage     OUT VARCHAR2,
         response         OUT VARCHAR2
     ) AS
-        l_id HRMS_DESIGNATIONS.DESIGNATION_ID%TYPE;
+        l_id ADMIN.HRMS_DESIGNATIONS.DESIGNATION_ID%TYPE;
     BEGIN
         errorCode := c_success_code;
         errorMessage := c_success;
@@ -166,7 +166,7 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
         END IF;
 
         IF errorCode = c_success_code THEN
-            INSERT INTO HRMS_DESIGNATIONS (DESIGNATION_CODE, DESIGNATION_NAME, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
+            INSERT INTO ADMIN.HRMS_DESIGNATIONS (DESIGNATION_CODE, DESIGNATION_NAME, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
             VALUES (UPPER(TRIM(designationCode)), TRIM(designationName), userName, SYSDATE, userName, SYSDATE)
             RETURNING DESIGNATION_ID INTO l_id;
             COMMIT;
@@ -182,16 +182,16 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     END createDesignation;
 
     PROCEDURE createGrade(
-        gradeCode     IN  HRMS_GRADES.GRADE_CODE%TYPE,
-        gradeName     IN  HRMS_GRADES.GRADE_NAME%TYPE,
-        minSalary     IN  HRMS_GRADES.MIN_SALARY%TYPE,
-        maxSalary     IN  HRMS_GRADES.MAX_SALARY%TYPE,
-        userName      IN  HRMS_GRADES.CREATED_BY%TYPE,
+        gradeCode     IN  ADMIN.HRMS_GRADES.GRADE_CODE%TYPE,
+        gradeName     IN  ADMIN.HRMS_GRADES.GRADE_NAME%TYPE,
+        minSalary     IN  ADMIN.HRMS_GRADES.MIN_SALARY%TYPE,
+        maxSalary     IN  ADMIN.HRMS_GRADES.MAX_SALARY%TYPE,
+        userName      IN  ADMIN.HRMS_GRADES.CREATED_BY%TYPE,
         errorCode     OUT NUMBER,
         errorMessage  OUT VARCHAR2,
         response      OUT VARCHAR2
     ) AS
-        l_id HRMS_GRADES.GRADE_ID%TYPE;
+        l_id ADMIN.HRMS_GRADES.GRADE_ID%TYPE;
     BEGIN
         errorCode := c_success_code;
         errorMessage := c_success;
@@ -208,7 +208,7 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
         END IF;
 
         IF errorCode = c_success_code THEN
-            INSERT INTO HRMS_GRADES (GRADE_CODE, GRADE_NAME, MIN_SALARY, MAX_SALARY, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
+            INSERT INTO ADMIN.HRMS_GRADES (GRADE_CODE, GRADE_NAME, MIN_SALARY, MAX_SALARY, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
             VALUES (UPPER(TRIM(gradeCode)), TRIM(gradeName), minSalary, maxSalary, userName, SYSDATE, userName, SYSDATE)
             RETURNING GRADE_ID INTO l_id;
             COMMIT;
@@ -224,14 +224,14 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     END createGrade;
 
     PROCEDURE createEmploymentType(
-        employmentTypeCode  IN  HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_CODE%TYPE,
-        employmentTypeName  IN  HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_NAME%TYPE,
-        userName            IN  HRMS_EMPLOYMENT_TYPES.CREATED_BY%TYPE,
+        employmentTypeCode  IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_CODE%TYPE,
+        employmentTypeName  IN  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_NAME%TYPE,
+        userName            IN  ADMIN.HRMS_EMPLOYMENT_TYPES.CREATED_BY%TYPE,
         errorCode           OUT NUMBER,
         errorMessage        OUT VARCHAR2,
         response            OUT VARCHAR2
     ) AS
-        l_id HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_ID%TYPE;
+        l_id ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_ID%TYPE;
     BEGIN
         errorCode := c_success_code;
         errorMessage := c_success;
@@ -246,7 +246,7 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
         END IF;
 
         IF errorCode = c_success_code THEN
-            INSERT INTO HRMS_EMPLOYMENT_TYPES (EMPLOYMENT_TYPE_CODE, EMPLOYMENT_TYPE_NAME, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
+            INSERT INTO ADMIN.HRMS_EMPLOYMENT_TYPES (EMPLOYMENT_TYPE_CODE, EMPLOYMENT_TYPE_NAME, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
             VALUES (UPPER(TRIM(employmentTypeCode)), TRIM(employmentTypeName), userName, SYSDATE, userName, SYSDATE)
             RETURNING EMPLOYMENT_TYPE_ID INTO l_id;
             COMMIT;
@@ -262,24 +262,24 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     END createEmploymentType;
 
     PROCEDURE validateEmployee(
-        employeeCode      IN  HRMS_EMPLOYEES.EMPLOYEE_CODE%TYPE,
-        firstName         IN  HRMS_EMPLOYEES.FIRST_NAME%TYPE,
-        lastName          IN  HRMS_EMPLOYEES.LAST_NAME%TYPE,
-        cnic              IN  HRMS_EMPLOYEES.CNIC%TYPE,
-        email             IN  HRMS_EMPLOYEES.EMAIL%TYPE,
-        mobile            IN  HRMS_EMPLOYEES.MOBILE%TYPE,
-        departmentId      IN  HRMS_EMPLOYEES.DEPARTMENT_ID%TYPE,
-        designationId     IN  HRMS_EMPLOYEES.DESIGNATION_ID%TYPE,
-        gradeId           IN  HRMS_EMPLOYEES.GRADE_ID%TYPE,
-        employmentTypeId  IN  HRMS_EMPLOYEES.EMPLOYMENT_TYPE_ID%TYPE,
-        dateOfJoining     IN  HRMS_EMPLOYEES.DATE_OF_JOINING%TYPE,
-        status            IN  HRMS_EMPLOYEES.STATUS%TYPE,
+        employeeCode      IN  ADMIN.HRMS_EMPLOYEES.EMPLOYEE_CODE%TYPE,
+        firstName         IN  ADMIN.HRMS_EMPLOYEES.FIRST_NAME%TYPE,
+        lastName          IN  ADMIN.HRMS_EMPLOYEES.LAST_NAME%TYPE,
+        cnic              IN  ADMIN.HRMS_EMPLOYEES.CNIC%TYPE,
+        email             IN  ADMIN.HRMS_EMPLOYEES.EMAIL%TYPE,
+        mobile            IN  ADMIN.HRMS_EMPLOYEES.MOBILE%TYPE,
+        departmentId      IN  ADMIN.HRMS_EMPLOYEES.DEPARTMENT_ID%TYPE,
+        designationId     IN  ADMIN.HRMS_EMPLOYEES.DESIGNATION_ID%TYPE,
+        gradeId           IN  ADMIN.HRMS_EMPLOYEES.GRADE_ID%TYPE,
+        employmentTypeId  IN  ADMIN.HRMS_EMPLOYEES.EMPLOYMENT_TYPE_ID%TYPE,
+        dateOfJoining     IN  ADMIN.HRMS_EMPLOYEES.DATE_OF_JOINING%TYPE,
+        status            IN  ADMIN.HRMS_EMPLOYEES.STATUS%TYPE,
         userName          IN  VARCHAR2,
         errorCode         OUT NUMBER,
         errorMessage      OUT VARCHAR2,
         response          OUT VARCHAR2
     ) AS
-        l_status HRMS_EMPLOYEES.STATUS%TYPE;
+        l_status ADMIN.HRMS_EMPLOYEES.STATUS%TYPE;
     BEGIN
         errorCode := c_success_code;
         errorMessage := c_success;
@@ -316,29 +316,29 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     END validateEmployee;
 
     PROCEDURE createEmployee(
-        employeeCode      IN  HRMS_EMPLOYEES.EMPLOYEE_CODE%TYPE,
-        firstName         IN  HRMS_EMPLOYEES.FIRST_NAME%TYPE,
-        lastName          IN  HRMS_EMPLOYEES.LAST_NAME%TYPE,
-        cnic              IN  HRMS_EMPLOYEES.CNIC%TYPE,
-        email             IN  HRMS_EMPLOYEES.EMAIL%TYPE,
-        mobile            IN  HRMS_EMPLOYEES.MOBILE%TYPE,
-        departmentId      IN  HRMS_EMPLOYEES.DEPARTMENT_ID%TYPE,
-        designationId     IN  HRMS_EMPLOYEES.DESIGNATION_ID%TYPE,
-        gradeId           IN  HRMS_EMPLOYEES.GRADE_ID%TYPE,
-        employmentTypeId  IN  HRMS_EMPLOYEES.EMPLOYMENT_TYPE_ID%TYPE,
-        dateOfJoining     IN  HRMS_EMPLOYEES.DATE_OF_JOINING%TYPE,
-        status            IN  HRMS_EMPLOYEES.STATUS%TYPE,
-        userName          IN  HRMS_EMPLOYEES.CREATED_BY%TYPE,
+        employeeCode      IN  ADMIN.HRMS_EMPLOYEES.EMPLOYEE_CODE%TYPE,
+        firstName         IN  ADMIN.HRMS_EMPLOYEES.FIRST_NAME%TYPE,
+        lastName          IN  ADMIN.HRMS_EMPLOYEES.LAST_NAME%TYPE,
+        cnic              IN  ADMIN.HRMS_EMPLOYEES.CNIC%TYPE,
+        email             IN  ADMIN.HRMS_EMPLOYEES.EMAIL%TYPE,
+        mobile            IN  ADMIN.HRMS_EMPLOYEES.MOBILE%TYPE,
+        departmentId      IN  ADMIN.HRMS_EMPLOYEES.DEPARTMENT_ID%TYPE,
+        designationId     IN  ADMIN.HRMS_EMPLOYEES.DESIGNATION_ID%TYPE,
+        gradeId           IN  ADMIN.HRMS_EMPLOYEES.GRADE_ID%TYPE,
+        employmentTypeId  IN  ADMIN.HRMS_EMPLOYEES.EMPLOYMENT_TYPE_ID%TYPE,
+        dateOfJoining     IN  ADMIN.HRMS_EMPLOYEES.DATE_OF_JOINING%TYPE,
+        status            IN  ADMIN.HRMS_EMPLOYEES.STATUS%TYPE,
+        userName          IN  ADMIN.HRMS_EMPLOYEES.CREATED_BY%TYPE,
         errorCode         OUT NUMBER,
         errorMessage      OUT VARCHAR2,
         response          OUT VARCHAR2
     ) AS
-        l_id HRMS_EMPLOYEES.EMPLOYEE_ID%TYPE;
+        l_id ADMIN.HRMS_EMPLOYEES.EMPLOYEE_ID%TYPE;
     BEGIN
         validateEmployee(employeeCode, firstName, lastName, cnic, email, mobile, departmentId, designationId, gradeId, employmentTypeId, dateOfJoining, status, userName, errorCode, errorMessage, response);
 
         IF errorCode = c_success_code THEN
-            INSERT INTO HRMS_EMPLOYEES (
+            INSERT INTO ADMIN.HRMS_EMPLOYEES (
                 EMPLOYEE_CODE, FIRST_NAME, LAST_NAME, CNIC, EMAIL, MOBILE, DEPARTMENT_ID,
                 DESIGNATION_ID, GRADE_ID, EMPLOYMENT_TYPE_ID, DATE_OF_JOINING, STATUS,
                 CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON
@@ -361,20 +361,20 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     END createEmployee;
 
     PROCEDURE updateEmployee(
-        employeeId        IN  HRMS_EMPLOYEES.EMPLOYEE_ID%TYPE,
-        employeeCode      IN  HRMS_EMPLOYEES.EMPLOYEE_CODE%TYPE,
-        firstName         IN  HRMS_EMPLOYEES.FIRST_NAME%TYPE,
-        lastName          IN  HRMS_EMPLOYEES.LAST_NAME%TYPE,
-        cnic              IN  HRMS_EMPLOYEES.CNIC%TYPE,
-        email             IN  HRMS_EMPLOYEES.EMAIL%TYPE,
-        mobile            IN  HRMS_EMPLOYEES.MOBILE%TYPE,
-        departmentId      IN  HRMS_EMPLOYEES.DEPARTMENT_ID%TYPE,
-        designationId     IN  HRMS_EMPLOYEES.DESIGNATION_ID%TYPE,
-        gradeId           IN  HRMS_EMPLOYEES.GRADE_ID%TYPE,
-        employmentTypeId  IN  HRMS_EMPLOYEES.EMPLOYMENT_TYPE_ID%TYPE,
-        dateOfJoining     IN  HRMS_EMPLOYEES.DATE_OF_JOINING%TYPE,
-        status            IN  HRMS_EMPLOYEES.STATUS%TYPE,
-        userName          IN  HRMS_EMPLOYEES.UPDATED_BY%TYPE,
+        employeeId        IN  ADMIN.HRMS_EMPLOYEES.EMPLOYEE_ID%TYPE,
+        employeeCode      IN  ADMIN.HRMS_EMPLOYEES.EMPLOYEE_CODE%TYPE,
+        firstName         IN  ADMIN.HRMS_EMPLOYEES.FIRST_NAME%TYPE,
+        lastName          IN  ADMIN.HRMS_EMPLOYEES.LAST_NAME%TYPE,
+        cnic              IN  ADMIN.HRMS_EMPLOYEES.CNIC%TYPE,
+        email             IN  ADMIN.HRMS_EMPLOYEES.EMAIL%TYPE,
+        mobile            IN  ADMIN.HRMS_EMPLOYEES.MOBILE%TYPE,
+        departmentId      IN  ADMIN.HRMS_EMPLOYEES.DEPARTMENT_ID%TYPE,
+        designationId     IN  ADMIN.HRMS_EMPLOYEES.DESIGNATION_ID%TYPE,
+        gradeId           IN  ADMIN.HRMS_EMPLOYEES.GRADE_ID%TYPE,
+        employmentTypeId  IN  ADMIN.HRMS_EMPLOYEES.EMPLOYMENT_TYPE_ID%TYPE,
+        dateOfJoining     IN  ADMIN.HRMS_EMPLOYEES.DATE_OF_JOINING%TYPE,
+        status            IN  ADMIN.HRMS_EMPLOYEES.STATUS%TYPE,
+        userName          IN  ADMIN.HRMS_EMPLOYEES.UPDATED_BY%TYPE,
         errorCode         OUT NUMBER,
         errorMessage      OUT VARCHAR2,
         response          OUT VARCHAR2
@@ -387,7 +387,7 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
         END IF;
 
         IF errorCode = c_success_code THEN
-            UPDATE HRMS_EMPLOYEES e
+            UPDATE ADMIN.HRMS_EMPLOYEES e
                SET e.EMPLOYEE_CODE = UPPER(TRIM(employeeCode)),
                    e.FIRST_NAME = TRIM(firstName),
                    e.LAST_NAME = TRIM(lastName),
@@ -416,8 +416,8 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     END updateEmployee;
 
     PROCEDURE deleteEmployee(
-        employeeId    IN  HRMS_EMPLOYEES.EMPLOYEE_ID%TYPE,
-        userName      IN  HRMS_EMPLOYEES.UPDATED_BY%TYPE,
+        employeeId    IN  ADMIN.HRMS_EMPLOYEES.EMPLOYEE_ID%TYPE,
+        userName      IN  ADMIN.HRMS_EMPLOYEES.UPDATED_BY%TYPE,
         errorCode     OUT NUMBER,
         errorMessage  OUT VARCHAR2,
         response      OUT VARCHAR2
@@ -434,7 +434,7 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
         END IF;
 
         IF errorCode = c_success_code THEN
-            DELETE FROM HRMS_EMPLOYEES WHERE EMPLOYEE_ID = employeeId;
+            DELETE FROM ADMIN.HRMS_EMPLOYEES WHERE EMPLOYEE_ID = employeeId;
             IF SQL%ROWCOUNT = 0 THEN
                 ROLLBACK;
                 setError(errorCode, errorMessage, response, 'Error: employeeId does not exist in deleteEmployee API.');
@@ -449,16 +449,16 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     END deleteEmployee;
 
     PROCEDURE createEmployeeContact(
-        employeeId    IN  HRMS_EMPLOYEE_CONTACTS.EMPLOYEE_ID%TYPE,
-        contactType   IN  HRMS_EMPLOYEE_CONTACTS.CONTACT_TYPE%TYPE,
-        contactValue  IN  HRMS_EMPLOYEE_CONTACTS.CONTACT_VALUE%TYPE,
-        isPrimary     IN  HRMS_EMPLOYEE_CONTACTS.IS_PRIMARY%TYPE,
-        userName      IN  HRMS_EMPLOYEE_CONTACTS.CREATED_BY%TYPE,
+        employeeId    IN  ADMIN.HRMS_EMPLOYEE_CONTACTS.EMPLOYEE_ID%TYPE,
+        contactType   IN  ADMIN.HRMS_EMPLOYEE_CONTACTS.CONTACT_TYPE%TYPE,
+        contactValue  IN  ADMIN.HRMS_EMPLOYEE_CONTACTS.CONTACT_VALUE%TYPE,
+        isPrimary     IN  ADMIN.HRMS_EMPLOYEE_CONTACTS.IS_PRIMARY%TYPE,
+        userName      IN  ADMIN.HRMS_EMPLOYEE_CONTACTS.CREATED_BY%TYPE,
         errorCode     OUT NUMBER,
         errorMessage  OUT VARCHAR2,
         response      OUT VARCHAR2
     ) AS
-        l_id HRMS_EMPLOYEE_CONTACTS.CONTACT_ID%TYPE;
+        l_id ADMIN.HRMS_EMPLOYEE_CONTACTS.CONTACT_ID%TYPE;
     BEGIN
         errorCode := c_success_code;
         errorMessage := c_success;
@@ -475,7 +475,7 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
         END IF;
 
         IF errorCode = c_success_code THEN
-            INSERT INTO HRMS_EMPLOYEE_CONTACTS (EMPLOYEE_ID, CONTACT_TYPE, CONTACT_VALUE, IS_PRIMARY, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
+            INSERT INTO ADMIN.HRMS_EMPLOYEE_CONTACTS (EMPLOYEE_ID, CONTACT_TYPE, CONTACT_VALUE, IS_PRIMARY, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
             VALUES (employeeId, UPPER(TRIM(contactType)), TRIM(contactValue), UPPER(COALESCE(TRIM(isPrimary), 'N')), userName, SYSDATE, userName, SYSDATE)
             RETURNING CONTACT_ID INTO l_id;
             COMMIT;
@@ -488,19 +488,19 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     END createEmployeeContact;
 
     PROCEDURE createEmployeeDocument(
-        employeeId      IN  HRMS_EMPLOYEE_DOCUMENTS.EMPLOYEE_ID%TYPE,
-        documentType    IN  HRMS_EMPLOYEE_DOCUMENTS.DOCUMENT_TYPE%TYPE,
-        documentNumber  IN  HRMS_EMPLOYEE_DOCUMENTS.DOCUMENT_NUMBER%TYPE,
-        fileName        IN  HRMS_EMPLOYEE_DOCUMENTS.FILE_NAME%TYPE,
-        mimeType        IN  HRMS_EMPLOYEE_DOCUMENTS.MIME_TYPE%TYPE,
-        issueDate       IN  HRMS_EMPLOYEE_DOCUMENTS.ISSUE_DATE%TYPE,
-        expiryDate      IN  HRMS_EMPLOYEE_DOCUMENTS.EXPIRY_DATE%TYPE,
-        userName        IN  HRMS_EMPLOYEE_DOCUMENTS.CREATED_BY%TYPE,
+        employeeId      IN  ADMIN.HRMS_EMPLOYEE_DOCUMENTS.EMPLOYEE_ID%TYPE,
+        documentType    IN  ADMIN.HRMS_EMPLOYEE_DOCUMENTS.DOCUMENT_TYPE%TYPE,
+        documentNumber  IN  ADMIN.HRMS_EMPLOYEE_DOCUMENTS.DOCUMENT_NUMBER%TYPE,
+        fileName        IN  ADMIN.HRMS_EMPLOYEE_DOCUMENTS.FILE_NAME%TYPE,
+        mimeType        IN  ADMIN.HRMS_EMPLOYEE_DOCUMENTS.MIME_TYPE%TYPE,
+        issueDate       IN  ADMIN.HRMS_EMPLOYEE_DOCUMENTS.ISSUE_DATE%TYPE,
+        expiryDate      IN  ADMIN.HRMS_EMPLOYEE_DOCUMENTS.EXPIRY_DATE%TYPE,
+        userName        IN  ADMIN.HRMS_EMPLOYEE_DOCUMENTS.CREATED_BY%TYPE,
         errorCode       OUT NUMBER,
         errorMessage    OUT VARCHAR2,
         response        OUT VARCHAR2
     ) AS
-        l_id HRMS_EMPLOYEE_DOCUMENTS.DOCUMENT_ID%TYPE;
+        l_id ADMIN.HRMS_EMPLOYEE_DOCUMENTS.DOCUMENT_ID%TYPE;
     BEGIN
         errorCode := c_success_code;
         errorMessage := c_success;
@@ -517,7 +517,7 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
         END IF;
 
         IF errorCode = c_success_code THEN
-            INSERT INTO HRMS_EMPLOYEE_DOCUMENTS (EMPLOYEE_ID, DOCUMENT_TYPE, DOCUMENT_NUMBER, FILE_NAME, MIME_TYPE, ISSUE_DATE, EXPIRY_DATE, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
+            INSERT INTO ADMIN.HRMS_EMPLOYEE_DOCUMENTS (EMPLOYEE_ID, DOCUMENT_TYPE, DOCUMENT_NUMBER, FILE_NAME, MIME_TYPE, ISSUE_DATE, EXPIRY_DATE, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
             VALUES (employeeId, UPPER(TRIM(documentType)), UPPER(TRIM(documentNumber)), TRIM(fileName), TRIM(mimeType), issueDate, expiryDate, userName, SYSDATE, userName, SYSDATE)
             RETURNING DOCUMENT_ID INTO l_id;
             COMMIT;
@@ -530,17 +530,17 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     END createEmployeeDocument;
 
     PROCEDURE createEmployeeDependent(
-        employeeId    IN  HRMS_EMPLOYEE_DEPENDENTS.EMPLOYEE_ID%TYPE,
-        fullName      IN  HRMS_EMPLOYEE_DEPENDENTS.FULL_NAME%TYPE,
-        relationship  IN  HRMS_EMPLOYEE_DEPENDENTS.RELATIONSHIP%TYPE,
-        dateOfBirth   IN  HRMS_EMPLOYEE_DEPENDENTS.DATE_OF_BIRTH%TYPE,
-        cnic          IN  HRMS_EMPLOYEE_DEPENDENTS.CNIC%TYPE,
-        userName      IN  HRMS_EMPLOYEE_DEPENDENTS.CREATED_BY%TYPE,
+        employeeId    IN  ADMIN.HRMS_EMPLOYEE_DEPENDENTS.EMPLOYEE_ID%TYPE,
+        fullName      IN  ADMIN.HRMS_EMPLOYEE_DEPENDENTS.FULL_NAME%TYPE,
+        relationship  IN  ADMIN.HRMS_EMPLOYEE_DEPENDENTS.RELATIONSHIP%TYPE,
+        dateOfBirth   IN  ADMIN.HRMS_EMPLOYEE_DEPENDENTS.DATE_OF_BIRTH%TYPE,
+        cnic          IN  ADMIN.HRMS_EMPLOYEE_DEPENDENTS.CNIC%TYPE,
+        userName      IN  ADMIN.HRMS_EMPLOYEE_DEPENDENTS.CREATED_BY%TYPE,
         errorCode     OUT NUMBER,
         errorMessage  OUT VARCHAR2,
         response      OUT VARCHAR2
     ) AS
-        l_id HRMS_EMPLOYEE_DEPENDENTS.DEPENDENT_ID%TYPE;
+        l_id ADMIN.HRMS_EMPLOYEE_DEPENDENTS.DEPENDENT_ID%TYPE;
     BEGIN
         errorCode := c_success_code;
         errorMessage := c_success;
@@ -557,7 +557,7 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
         END IF;
 
         IF errorCode = c_success_code THEN
-            INSERT INTO HRMS_EMPLOYEE_DEPENDENTS (EMPLOYEE_ID, FULL_NAME, RELATIONSHIP, DATE_OF_BIRTH, CNIC, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
+            INSERT INTO ADMIN.HRMS_EMPLOYEE_DEPENDENTS (EMPLOYEE_ID, FULL_NAME, RELATIONSHIP, DATE_OF_BIRTH, CNIC, CREATED_BY, CREATED_ON, UPDATED_BY, UPDATED_ON)
             VALUES (employeeId, TRIM(fullName), UPPER(TRIM(relationship)), dateOfBirth, TRIM(cnic), userName, SYSDATE, userName, SYSDATE)
             RETURNING DEPENDENT_ID INTO l_id;
             COMMIT;
@@ -570,7 +570,7 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
     END createEmployeeDependent;
 
     PROCEDURE getEmployeeFullName(
-        employeeId    IN  HRMS_EMPLOYEES.EMPLOYEE_ID%TYPE,
+        employeeId    IN  ADMIN.HRMS_EMPLOYEES.EMPLOYEE_ID%TYPE,
         errorCode     OUT NUMBER,
         errorMessage  OUT VARCHAR2,
         response      OUT VARCHAR2
@@ -585,7 +585,7 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
         ELSE
             SELECT TRIM(e.FIRST_NAME || ' ' || e.LAST_NAME)
               INTO response
-              FROM HRMS_EMPLOYEES e
+              FROM ADMIN.HRMS_EMPLOYEES e
              WHERE e.EMPLOYEE_ID = employeeId;
         END IF;
     EXCEPTION
@@ -597,4 +597,4 @@ CREATE OR REPLACE PACKAGE BODY HRMS_PKG AS
 END HRMS_PKG;
 /
 
-SHOW ERRORS PACKAGE BODY HRMS_PKG
+SHOW ERRORS PACKAGE BODY ADMIN.HRMS_PKG

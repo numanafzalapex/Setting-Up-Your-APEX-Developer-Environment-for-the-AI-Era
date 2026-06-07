@@ -7,15 +7,15 @@ PROMPT Compiling HRMS_PKG package body
 @@../packages/hrms_pkg.pkb
 
 DECLARE
-    l_locationId        HRMS_LOCATIONS.LOCATION_ID%TYPE;
-    l_departmentId      HRMS_DEPARTMENTS.DEPARTMENT_ID%TYPE;
-    l_designationId     HRMS_DESIGNATIONS.DESIGNATION_ID%TYPE;
-    l_gradeId           HRMS_GRADES.GRADE_ID%TYPE;
-    l_employmentTypeId  HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_ID%TYPE;
-    l_employeeId        HRMS_EMPLOYEES.EMPLOYEE_ID%TYPE;
-    l_contactId         HRMS_EMPLOYEE_CONTACTS.CONTACT_ID%TYPE;
-    l_documentId        HRMS_EMPLOYEE_DOCUMENTS.DOCUMENT_ID%TYPE;
-    l_dependentId       HRMS_EMPLOYEE_DEPENDENTS.DEPENDENT_ID%TYPE;
+    l_locationId        ADMIN.HRMS_LOCATIONS.LOCATION_ID%TYPE;
+    l_departmentId      ADMIN.HRMS_DEPARTMENTS.DEPARTMENT_ID%TYPE;
+    l_designationId     ADMIN.HRMS_DESIGNATIONS.DESIGNATION_ID%TYPE;
+    l_gradeId           ADMIN.HRMS_GRADES.GRADE_ID%TYPE;
+    l_employmentTypeId  ADMIN.HRMS_EMPLOYMENT_TYPES.EMPLOYMENT_TYPE_ID%TYPE;
+    l_employeeId        ADMIN.HRMS_EMPLOYEES.EMPLOYEE_ID%TYPE;
+    l_contactId         ADMIN.HRMS_EMPLOYEE_CONTACTS.CONTACT_ID%TYPE;
+    l_documentId        ADMIN.HRMS_EMPLOYEE_DOCUMENTS.DOCUMENT_ID%TYPE;
+    l_dependentId       ADMIN.HRMS_EMPLOYEE_DEPENDENTS.DEPENDENT_ID%TYPE;
     l_errorCode         NUMBER;
     l_errorMessage      VARCHAR2(1000);
     l_response          VARCHAR2(200);
@@ -45,19 +45,19 @@ DECLARE
         END IF;
     END assertTrue;
 BEGIN
-    DELETE FROM HRMS_EMPLOYEES
+    DELETE FROM ADMIN.HRMS_EMPLOYEES
      WHERE EMPLOYEE_CODE IN ('UT-HRMS-EMP-001', 'UT-HRMS-EMP-002')
         OR CNIC IN ('3520212345671', '3520212345672')
         OR EMAIL IN ('ut.employee@example.com', 'ut.employee.updated@example.com');
 
-    DELETE FROM HRMS_DEPARTMENTS WHERE DEPARTMENT_CODE = 'UT-HRMS-DEPT';
-    DELETE FROM HRMS_LOCATIONS WHERE LOCATION_CODE = 'UT-HRMS-LOC';
-    DELETE FROM HRMS_DESIGNATIONS WHERE DESIGNATION_CODE = 'UT-HRMS-DSG';
-    DELETE FROM HRMS_GRADES WHERE GRADE_CODE = 'UT-HRMS-GRD';
-    DELETE FROM HRMS_EMPLOYMENT_TYPES WHERE EMPLOYMENT_TYPE_CODE = 'UT-HRMS-ET';
+    DELETE FROM ADMIN.HRMS_DEPARTMENTS WHERE DEPARTMENT_CODE = 'UT-HRMS-DEPT';
+    DELETE FROM ADMIN.HRMS_LOCATIONS WHERE LOCATION_CODE = 'UT-HRMS-LOC';
+    DELETE FROM ADMIN.HRMS_DESIGNATIONS WHERE DESIGNATION_CODE = 'UT-HRMS-DSG';
+    DELETE FROM ADMIN.HRMS_GRADES WHERE GRADE_CODE = 'UT-HRMS-GRD';
+    DELETE FROM ADMIN.HRMS_EMPLOYMENT_TYPES WHERE EMPLOYMENT_TYPE_CODE = 'UT-HRMS-ET';
     COMMIT;
 
-    HRMS_PKG.createLocation(
+    ADMIN.HRMS_PKG.createLocation(
         locationCode  => 'ut-hrms-loc',
         locationName  => 'Unit Test Location',
         city          => 'Karachi',
@@ -70,7 +70,7 @@ BEGIN
     assertSuccess('createLocation');
     l_locationId := TO_NUMBER(l_response);
 
-    HRMS_PKG.createDepartment(
+    ADMIN.HRMS_PKG.createDepartment(
         departmentCode     => 'ut-hrms-dept',
         departmentName     => 'Unit Test Department',
         parentDepartmentId => NULL,
@@ -84,7 +84,7 @@ BEGIN
     assertSuccess('createDepartment');
     l_departmentId := TO_NUMBER(l_response);
 
-    HRMS_PKG.createDesignation(
+    ADMIN.HRMS_PKG.createDesignation(
         designationCode => 'ut-hrms-dsg',
         designationName => 'Unit Test Designation',
         userName        => 'UNIT_TEST',
@@ -95,7 +95,7 @@ BEGIN
     assertSuccess('createDesignation');
     l_designationId := TO_NUMBER(l_response);
 
-    HRMS_PKG.createGrade(
+    ADMIN.HRMS_PKG.createGrade(
         gradeCode     => 'ut-hrms-grd',
         gradeName     => 'Unit Test Grade',
         minSalary     => 1000,
@@ -108,7 +108,7 @@ BEGIN
     assertSuccess('createGrade');
     l_gradeId := TO_NUMBER(l_response);
 
-    HRMS_PKG.createEmploymentType(
+    ADMIN.HRMS_PKG.createEmploymentType(
         employmentTypeCode => 'ut-hrms-et',
         employmentTypeName => 'Unit Test Employment Type',
         userName           => 'UNIT_TEST',
@@ -119,7 +119,7 @@ BEGIN
     assertSuccess('createEmploymentType');
     l_employmentTypeId := TO_NUMBER(l_response);
 
-    HRMS_PKG.createEmployee(
+    ADMIN.HRMS_PKG.createEmployee(
         employeeCode     => 'ut-hrms-emp-001',
         firstName        => 'Unit',
         lastName         => 'Employee',
@@ -142,14 +142,14 @@ BEGIN
 
     SELECT COUNT(*)
       INTO l_count
-      FROM HRMS_EMPLOYEES e
+      FROM ADMIN.HRMS_EMPLOYEES e
      WHERE e.EMPLOYEE_ID = l_employeeId
        AND e.EMPLOYEE_CODE = 'UT-HRMS-EMP-001'
        AND e.EMAIL = 'ut.employee@example.com'
        AND e.STATUS = 'ACTIVE';
     assertTrue(l_count = 1, 'createEmployee inserted normalized employee');
 
-    HRMS_PKG.createEmployeeContact(
+    ADMIN.HRMS_PKG.createEmployeeContact(
         employeeId   => l_employeeId,
         contactType  => 'mobile',
         contactValue => '+92-300-0000001',
@@ -162,7 +162,7 @@ BEGIN
     assertSuccess('createEmployeeContact');
     l_contactId := TO_NUMBER(l_response);
 
-    HRMS_PKG.createEmployeeDocument(
+    ADMIN.HRMS_PKG.createEmployeeDocument(
         employeeId     => l_employeeId,
         documentType   => 'CNIC',
         documentNumber => '3520212345671',
@@ -178,7 +178,7 @@ BEGIN
     assertSuccess('createEmployeeDocument');
     l_documentId := TO_NUMBER(l_response);
 
-    HRMS_PKG.createEmployeeDependent(
+    ADMIN.HRMS_PKG.createEmployeeDependent(
         employeeId    => l_employeeId,
         fullName      => 'Unit Dependent',
         relationship  => 'child',
@@ -196,7 +196,7 @@ BEGIN
     assertTrue(l_documentId IS NOT NULL, 'document id returned');
     assertTrue(l_dependentId IS NOT NULL, 'dependent id returned');
 
-    HRMS_PKG.updateEmployee(
+    ADMIN.HRMS_PKG.updateEmployee(
         employeeId       => l_employeeId,
         employeeCode     => 'ut-hrms-emp-002',
         firstName        => 'Updated',
@@ -217,7 +217,7 @@ BEGIN
     );
     assertSuccess('updateEmployee');
 
-    HRMS_PKG.getEmployeeFullName(
+    ADMIN.HRMS_PKG.getEmployeeFullName(
         employeeId    => l_employeeId,
         errorCode     => l_errorCode,
         errorMessage  => l_errorMessage,
@@ -226,7 +226,7 @@ BEGIN
     assertSuccess('getEmployeeFullName');
     assertTrue(l_response = 'Updated Employee', 'getEmployeeFullName returned updated full name');
 
-    HRMS_PKG.deleteEmployee(
+    ADMIN.HRMS_PKG.deleteEmployee(
         employeeId    => l_employeeId,
         userName      => 'UNIT_TEST',
         errorCode     => l_errorCode,
@@ -235,11 +235,11 @@ BEGIN
     );
     assertSuccess('deleteEmployee');
 
-    DELETE FROM HRMS_DEPARTMENTS WHERE DEPARTMENT_ID = l_departmentId;
-    DELETE FROM HRMS_LOCATIONS WHERE LOCATION_ID = l_locationId;
-    DELETE FROM HRMS_DESIGNATIONS WHERE DESIGNATION_ID = l_designationId;
-    DELETE FROM HRMS_GRADES WHERE GRADE_ID = l_gradeId;
-    DELETE FROM HRMS_EMPLOYMENT_TYPES WHERE EMPLOYMENT_TYPE_ID = l_employmentTypeId;
+    DELETE FROM ADMIN.HRMS_DEPARTMENTS WHERE DEPARTMENT_ID = l_departmentId;
+    DELETE FROM ADMIN.HRMS_LOCATIONS WHERE LOCATION_ID = l_locationId;
+    DELETE FROM ADMIN.HRMS_DESIGNATIONS WHERE DESIGNATION_ID = l_designationId;
+    DELETE FROM ADMIN.HRMS_GRADES WHERE GRADE_ID = l_gradeId;
+    DELETE FROM ADMIN.HRMS_EMPLOYMENT_TYPES WHERE EMPLOYMENT_TYPE_ID = l_employmentTypeId;
     COMMIT;
 
     DBMS_OUTPUT.PUT_LINE('HRMS_PKG tests passed.');
