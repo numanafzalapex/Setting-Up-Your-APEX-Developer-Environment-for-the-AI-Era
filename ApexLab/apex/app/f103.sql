@@ -3119,6 +3119,17 @@ wwv_flow_imp_page.create_page_plug(
 );
 <<<<<<< HEAD
 wwv_flow_imp_page.create_region_column(
+ p_id=>wwv_flow_imp.id(9002000000000026)
+,p_name=>'APEX$ROW_SELECTOR'
+,p_item_type=>'NATIVE_ROW_SELECTOR'
+,p_display_sequence=>10
+,p_attribute_01=>'Y'
+,p_attribute_02=>'Y'
+,p_attribute_03=>'N'
+,p_enable_hide=>true
+,p_is_primary_key=>false
+);
+wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(9002000000000027)
 ,p_name=>'APEX$ROW_ACTION'
 ,p_item_type=>'NATIVE_ROW_ACTION'
